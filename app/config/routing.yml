@@ -1,0 +1,14 @@
+shop:
+    resource: "@ShopBundle/Resources/config/routing.yml"
+    prefix:   /shop
+
+offre:
+    resource: "@OffreBundle/Resources/config/routing.yml"
+    prefix:   /offre
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
