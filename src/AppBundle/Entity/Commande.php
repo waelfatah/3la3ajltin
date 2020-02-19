@@ -2,13 +2,15 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Commande
  *
- * @ORM\Table(name="commande", indexes={@ORM\Index(name="commande_prod", columns={"id_prod"}), @ORM\Index(name="commande_user", columns={"id_user"})})
- * @ORM\Entity
+ * @ORM\Table(name="commande", indexes={ @ORM\Index(name="commande_user", columns={"id_user"})})
+ * @ORM\Entity(repositoryClass="ShopBundle\Repository\CommandeRepository")
  */
 class Commande
 {
@@ -20,7 +22,12 @@ class Commande
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idCommande;
-
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
+     */
+    private $Date;
     /**
      * @var float
      *
@@ -35,19 +42,29 @@ class Commande
      */
     private $codePromo;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="quantite", type="integer", nullable=false)
-     */
-    private $quantite;
 
     /**
-     * @var \Produit
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->Date;
+    }
+
+    /**
+     * @param \DateTime $Date
+     */
+    public function setDate($Date)
+    {
+        $this->Date = $Date;
+    }
+
+    /**
      *
-     * @ORM\ManyToOne(targetEntity="Produit")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_prod", referencedColumnName="id_prod")
+     * @ORM\ManyToMany(targetEntity="Produit", cascade={"persist"})
+     * @ORM\JoinTable(name="comamnde_produits",
+     *   joinColumns={@ORM\JoinColumn(name="id_commande" ,referencedColumnName="id_commande")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="id_prod", referencedColumnName="id_prod")})
      * })
      */
     private $idProd;
@@ -110,37 +127,11 @@ class Commande
         $this->codePromo = $codePromo;
     }
 
-    /**
-     * @return int
-     */
-    public function getQuantite()
-    {
-        return $this->quantite;
-    }
 
-    /**
-     * @param int $quantite
-     */
-    public function setQuantite($quantite)
-    {
-        $this->quantite = $quantite;
-    }
 
-    /**
-     * @return \Produit
-     */
-    public function getIdProd()
-    {
-        return $this->idProd;
-    }
 
-    /**
-     * @param \Produit $idProd
-     */
-    public function setIdProd($idProd)
-    {
-        $this->idProd = $idProd;
-    }
+
+
 
     /**
      * @return \FosUser
@@ -158,6 +149,38 @@ class Commande
         $this->idUser = $idUser;
     }
 
+    /**
+     * Add $idProd
+     *
+     * @param Produit $idProd
+     *
+     * @return $this
+     */
+    public function addProduit(Produit $idProd){
+        $this->idProd[] = $idProd;
+
+        return $this;
+    }
+    /**
+     * Remove $idProd
+     *
+     * @param Produit $idProd
+     */
+    public function removeProduit(Produit $idProd){
+        $this->idProd->removeElement($idProd);
+    }
+    /**
+     * Get $idProd
+     *
+     * @return Collection
+     */
+    public function getIdProd(){
+        return $this->idProd;
+    }
+    public function __construct()
+    {
+        $this->idProd = new ArrayCollection();
+    }
 
 }
 

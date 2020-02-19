@@ -1,0 +1,40 @@
+{% extends '/front/shop.html.twig' %}
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    {% block produits %}
+        {% for produit in list %}
+            <div class="col-lg-6 col-md-6 item">
+                <div class="cy_store_box">
+                    <div class="cy_store_img">
+                        <a href="shop_single.html"><img src="{{produit.urlImage}}" alt="store" class="img-fluid"></a>
+                        <div class="cy_store_img_overlay">
+                            <p>Sale</p>
+                        </div>
+                    </div>
+                    <div class="cy_store_data">
+                        <div class="cy_store_text">
+                            <h3><a href="shop_single.html">{{produit.nom|upper}}</a></h3>
+                            <ul>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                            </ul>
+                        </div>
+                        <p>Très beau vélo j'avoue.</p>
+                        <form method="post">
+                            <a href="{{ path('prod_addPanier',{('id'):produit.idProd}) }}" class="cy_button" data-hover="+"><span>{{ produit.prixProd }}Dt</span></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endblock %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

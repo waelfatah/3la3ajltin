@@ -42,8 +42,6 @@ Author: Kamleshyadav
 {% endblock %}
 
 <body>
-<!--Loader Start-->
-
 <!--Top bar start-->
 <div class="cy_top_wrapper">
     <div class="cy_top_info">
@@ -75,7 +73,8 @@ Author: Kamleshyadav
                                                 <h4><a href="cart.html">Road Bicycle</a></h4>
                                                 <h5>$2200</h5>
                                             </div>
-                                            <a class="cart_delete"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                            <a class="
+                                            cart_delete"><i class="fa fa-times" aria-hidden="true"></i></a>
                                         </div>
                                     </li>
                                     <li>
@@ -176,11 +175,11 @@ Author: Kamleshyadav
     </div>
 </div>
 <!--Banner section start-->
-<div class="cy_banner_wrapper">
-    <div class="container-fluid">
+<div class="cy_bread_wrapper">
+    <div class="container">
         <div class="row">
-            <div id="rev_slider_1068_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="levano4export" data-source="gallery" style="background-color:transparent;padding:0px;">
-
+            <div class="col-lg-12 col-md-12">
+                <h1>cart</h1>
             </div>
         </div>
     </div>
@@ -199,7 +198,7 @@ Author: Kamleshyadav
                 <div class="cy_menu">
                     <nav>
                         <ul>
-                            <li><a href="index.html" class="active">home</a></li>
+                            <li><a href="index.html">home</a></li>
                             <li><a href="about.html">about</a></li>
                             <li class="dropdown"><a href="javascript:;">event</a>
                                 <ul class="sub-menu">
@@ -207,7 +206,7 @@ Author: Kamleshyadav
                                     <li><a href="event_single.html">event single</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="javascript:;">blog</a>
+                            <li class="dropdown"><a href="blog.html">blog</a>
                                 <ul class="sub-menu">
                                     <li><a href="blog.html">blog</a></li>
                                     <li><a href="blog_single.html">blog single</a></li>
@@ -242,26 +241,84 @@ Author: Kamleshyadav
         <i class="fa fa-search"></i>
     </div>
 </div>
-{% block body %}
-{% endblock %}
-<!--About section start-->
+<!-- Cart section start -->
+<div class="cy_cart_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-14">
+                <div class="cy_cart_box woocommerce">
+                    <table class="shop_table shop_table_responsive cart">
+                        <thead>
+                        <tr>
+                            <th class="product-thumbnail">Image</th>
+                            <th class="product-name">Name</th>
+                            <th class="product-price">Price</th>
+                            <th class="product-name">Quantity</th>
+                            <th class="product-price">Total Product</th>
+                            <th class="product-remove">Remove</th>
+                        </tr>
+                        </thead>
+                        {% for produit in panier %}
+                        <tbody>
+                        <tr>
 
-<!--Team section start-->
+                            <td class="product-thumbnail"><a href="#"><img src="{{ produit.product.urlImage }}" alt="cart thumbnail" class="img-fluid"></a></td>
+                            <td class="product-name">{{ produit.product.nom }}</td>
+                            <td class="product-price">{{ produit.product.prixProd }}</td>
+                            <td class="product-name">{{ produit.quantity }}</td>
+                            <td class="product-price">{{ produit.product.prixProd * produit.quantity }}</td>
+                            <td class="product-remove"><a href="{{ path('prod_Remove',{('id'):produit.product.idProd}) }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 
-<!--Achievements section start-->
-
-<!--Gallery section css start-->
-
-<!--Cycle Tour section start-->
-
-<!--Events Sevtion Start-->
-
-<!--Our sponsors section start-->
-
-<!--upcoming races section Start-->
-
-<!--result section start-->
-
+                        </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="cy_cart_sidebar">
+                    <div class="coupon">
+                        <h2>Promotional Code</h2>
+                        <div class="coupon_input">
+                            <input type="text" placeholder="Enter Your Code Here">
+                            <a href="#" class="cy_button">Apply</a>
+                        </div>
+                    </div>
+                    <div class="cart-collaterals">
+                        <div class="cart_totals">
+                            <h2>Cart Total</h2>
+                            <table class="shop_table shop_table_responsive">
+                                <tbody>
+                                <tr class="cart-subtotal">
+                                    <td>Subtotal</td>
+                                    <td>{{ total }}</td>
+                                </tr>
+                                <tr class="cart-shipping">
+                                    <td>Shipping</td>
+                                    <td></td>
+                                </tr>
+                                <tr class="cart-tax">
+                                    <td>Value Added Tax</td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr class="order-total">
+                                    <th>Total</th>
+                                    <th>{{ total }}</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="wc-proceed-to-checkout">
+                            <a href="{{path('cart_Validate')}}" class="cy_button">Proceed To Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!--Footer section start-->
 <div class="cy_footer_wrapper cy_section_padding padder_bottom75">
     <div class="container">
@@ -350,31 +407,30 @@ Author: Kamleshyadav
 <!--Go to top start-->
 <div class="cy_go_to">
     <div class="cy_go_top">
-        <img src="images/go_to_top.png" alt="Back to top">
+        <img src="images/go_to_top.png" alt="back to top">
     </div>
 </div>
+</body>
 {% block scripts %}
-<!--scripts start-->
-<script src="{{asset('Asset/js/jquery.js')}}"></script>
-<script src="{{ asset('Asset/js/tether.min.js')}}"></script>
-<script src="{{ asset('Asset/js/bootstrap.min.js')}}"></script>
-<script src="{{ asset('Asset/js/jquery.countTo.js')}}"></script>
-<script src="{{ asset('Asset/js/appear.js')}}"></script>
-<script src="{{ asset('Asset/js/wow.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/owl/owl.carousel.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/magnific/jquery.magnific-popup.min.js')}}"></script>
-<!--Revolution slider js-->
-<script src="{{ asset('Asset/js/plugin/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.navigation.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.slideanims.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.layeranimation.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.parallax.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.kenburn.min.js')}}"></script>
-<script src="{{ asset('Asset/js/jquery.nice-select.min.js')}}"></script>
-<script src="{{ asset('Asset/js/custom.js')}}"></script>
+    <!--scripts start-->
+    <script src="{{asset('Asset/js/jquery.js')}}"></script>
+    <script src="{{ asset('Asset/js/tether.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/jquery.countTo.js')}}"></script>
+    <script src="{{ asset('Asset/js/appear.js')}}"></script>
+    <script src="{{ asset('Asset/js/wow.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/owl/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/magnific/jquery.magnific-popup.min.js')}}"></script>
+    <!--Revolution slider js-->
+    <script src="{{ asset('Asset/js/plugin/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.navigation.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.slideanims.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.layeranimation.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.parallax.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.kenburn.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/jquery.nice-select.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/custom.js')}}"></script>
 {% endblock %}
 
-
-</body>
 </html>

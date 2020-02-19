@@ -1,0 +1,117 @@
+{% extends '/back/backbase.html.twig' %}
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="col-xl-8 order-xl-1">
+        <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <h3 class="mb-0">Créer Compte</h3>
+                    </div>
+                    <div class="col-4 text-right">
+                        <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <h6 class="heading-small text-muted mb-4">User information</h6>
+                    <div class="pl-lg-4">
+                        <div class="row">
+                            {% form_theme form 'bootstrap_3_layout.html.twig' %}
+                            {{ form_start(form) }}
+                            <div class="col-lg-6">
+                                <div class="form-group">
+
+                                    <label class="form-control-label" for="input-username">Email</label>
+
+                                    {{ form_widget(form.email) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+
+                                    <label class="form-control-label" for="input-username">Nom d'utilisateur</label>
+
+                                    {{ form_widget(form.username) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+
+                                    <label class="form-control-label" for="input-username">Mot de passe</label>
+
+                                    {{ form_widget(form.plainPassword.first) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+
+                                    <label class="form-control-label" for="input-username">Répéter mot de passe</label>
+
+                                    {{ form_widget(form.plainPassword.second) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="dropdown">
+
+                                    <label class="form-control-label" for="input-username">Type</label>
+
+                                    {{ form_widget(form.roles) }}
+                                </div>
+                            </div>
+
+                            {{ form_end(form) }}
+                        </div>
+                        <hr class="my-4" />
+                        <!-- Address -->
+                        <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-address">Address</label>
+                                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-city">City</label>
+                                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-country">Country</label>
+                                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-country">Postal code</label>
+                                        <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <!-- Description -->
+                        <h6 class="heading-small text-muted mb-4">About me</h6>
+                        <div class="pl-lg-4">
+                            <div class="form-group">
+                                <label>About Me</label>
+                                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

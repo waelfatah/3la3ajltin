@@ -1,18 +1,10 @@
 <!DOCTYPE html>
-<!--
-**********************************************************************************************************
-    Copyright (c)
-********************************************************************************************************** -->
-<!--
-Template Name: Cycling- Html Template
-Version: 1.0.0
-Author: Kamleshyadav
--->
+
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
-<!--<![endif]-->
+
 
 <head>
     <title>Cycling - Html Template</title>
@@ -24,7 +16,7 @@ Author: Kamleshyadav
     <meta name="author" content="Hsoft">
     <meta name="MobileOptimized" content="320">
     <!-- favicon links-->
-    <link rel="icon" type="image/icon" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/icon" href="favicon.png">
     <!-- main css -->
     <link rel="stylesheet" href="{{asset('Asset/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{ asset('Asset/css/fonts.css')}}">
@@ -38,12 +30,8 @@ Author: Kamleshyadav
     <link href="{{ asset('Asset/js/plugin/revolution/css/navigation.css" rel="stylesheet" type="text/css')}}">
     <link rel="stylesheet" href="{{ asset('Asset/css/style.css')}}">
 </head>
-{% block head %}
-{% endblock %}
 
 <body>
-<!--Loader Start-->
-
 <!--Top bar start-->
 <div class="cy_top_wrapper">
     <div class="cy_top_info">
@@ -176,11 +164,11 @@ Author: Kamleshyadav
     </div>
 </div>
 <!--Banner section start-->
-<div class="cy_banner_wrapper">
-    <div class="container-fluid">
+<div class="cy_bread_wrapper">
+    <div class="container">
         <div class="row">
-            <div id="rev_slider_1068_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="levano4export" data-source="gallery" style="background-color:transparent;padding:0px;">
-
+            <div class="col-lg-12 col-md-12">
+                <h1>shop</h1>
             </div>
         </div>
     </div>
@@ -199,7 +187,7 @@ Author: Kamleshyadav
                 <div class="cy_menu">
                     <nav>
                         <ul>
-                            <li><a href="index.html" class="active">home</a></li>
+                            <li><a href="index.html">home</a></li>
                             <li><a href="about.html">about</a></li>
                             <li class="dropdown"><a href="javascript:;">event</a>
                                 <ul class="sub-menu">
@@ -207,7 +195,7 @@ Author: Kamleshyadav
                                     <li><a href="event_single.html">event single</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="javascript:;">blog</a>
+                            <li class="dropdown"><a href="blog.html">blog</a>
                                 <ul class="sub-menu">
                                     <li><a href="blog.html">blog</a></li>
                                     <li><a href="blog_single.html">blog single</a></li>
@@ -242,26 +230,219 @@ Author: Kamleshyadav
         <i class="fa fa-search"></i>
     </div>
 </div>
-{% block body %}
-{% endblock %}
-<!--About section start-->
+<!-- shop section start -->
+<div class="cy_shop_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 push-lg-4">
+                <div class="cy_shop_page" id="products">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-5">
+                            <div class="cy_shop_view">
+                                <ul>
+                                    <li class="active"><a href="#" id="grid"><i class="fa fa-th-large" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" id="list"><i class="fa fa-list-ul" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-5 col-7">
+                            <div class="cy_showing_product">
+                                <p>Showing 8 of 450 Total</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4">
+                            <div class="cy_shorting">
+                                <select>
+                                    <option>Short by</option>
+                                    <option>Default</option>
+                                    <option>Ascending</option>
+                                    <option>Decending</option>
+                                </select>
+                            </div>
+                        </div>
 
-<!--Team section start-->
-
-<!--Achievements section start-->
-
-<!--Gallery section css start-->
-
-<!--Cycle Tour section start-->
-
-<!--Events Sevtion Start-->
-
-<!--Our sponsors section start-->
-
-<!--upcoming races section Start-->
-
-<!--result section start-->
-
+                        {% block produits %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 pull-lg-8">
+                <div class="cy_shop_sidebar">
+                    <div class="widget woocommerce widget_product_search">
+                        <form class="search-form">
+                            <div class="input-group">
+                                <input type="text" value="" name="s" class="form-control" placeholder="Search">
+                                <span class="cy_search_btn">
+                                        <button class="btn btn-search" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                    </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="widget woocommerce widget_category">
+                        <h3 class="woocommerce_widget_title">Categories</h3>
+                        <ul>
+                            <li>
+                                <label>Road Bicycles (245)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Flat Bar Road Bikes (346)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Touring Bicycles (604)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Hybrid Bicycles (338)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Cross Bikes (130)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Freight Bicycles (372)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Helmet (742)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Bike Bag (810)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="widget woocommerce widget_price">
+                        <h3 class="woocommerce_widget_title">Price</h3>
+                        <div id="slider-range">
+                        </div>
+                        <div class="cy_range">
+                            <input type="text" id="amount" readonly>
+                        </div>
+                    </div>
+                    <div class="widget woocommerce widget_availability">
+                        <h3 class="woocommerce_widget_title">Availability</h3>
+                        <ul>
+                            <li>
+                                <label>In Stock (2045)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>All Items (3141)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="widget woocommerce widget_color">
+                        <h3 class="woocommerce_widget_title">Color</h3>
+                        <ul>
+                            <li>
+                                <label>White
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Black
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Red
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Brown
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Navy
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Blue
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Grey
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Green
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="widget woocommerce widget_size">
+                        <h3 class="woocommerce_widget_title">Size</h3>
+                        <ul>
+                            <li>
+                                <label>Small (214)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Medium (410)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Large (874)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Extra Large (621)
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!--Footer section start-->
 <div class="cy_footer_wrapper cy_section_padding padder_bottom75">
     <div class="container">
@@ -350,10 +531,12 @@ Author: Kamleshyadav
 <!--Go to top start-->
 <div class="cy_go_to">
     <div class="cy_go_top">
-        <img src="images/go_to_top.png" alt="Back to top">
+        <img src="images/go_to_top.png" alt="back to top">
     </div>
 </div>
-{% block scripts %}
+</body>
+{% block body %}
+{% endblock %}
 <!--scripts start-->
 <script src="{{asset('Asset/js/jquery.js')}}"></script>
 <script src="{{ asset('Asset/js/tether.min.js')}}"></script>
@@ -373,8 +556,6 @@ Author: Kamleshyadav
 <script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.kenburn.min.js')}}"></script>
 <script src="{{ asset('Asset/js/jquery.nice-select.min.js')}}"></script>
 <script src="{{ asset('Asset/js/custom.js')}}"></script>
+{% block scripts %}
 {% endblock %}
-
-
-</body>
 </html>

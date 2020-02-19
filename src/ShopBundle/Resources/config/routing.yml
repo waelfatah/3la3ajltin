@@ -1,3 +1,67 @@
-shop_homepage:
-    path:     /
+Shop_homepage:
+    path:     /produit
     defaults: { _controller: ShopBundle:Default:index }
+panier_add:
+    path:     /panier/add/{id}
+    defaults: { _controller: ShopBundle:Panier:add }
+
+produit_add:
+    path:     /add
+    defaults: { _controller: ShopBundle:Product:ajouter }
+
+produit_list:
+    path:     /list
+    defaults: { _controller: ShopBundle:Product:showAll }
+
+produit_img:
+    path:     /img/{id}
+    defaults: { _controller: ShopBundle:Product:showImg }
+
+produit_updateProd:
+    path:     /updateP/{id}
+    defaults: { _controller: ShopBundle:Product:update }
+
+produit_deleteProd:
+    path:     /deleteeP/{id}
+    defaults: { _controller: ShopBundle:Product:delete }
+produit_show:
+    path:     /front/shop
+    defaults: { _controller: ShopBundle:Shop:showProd }
+
+velo_add:
+    path:     /addV
+    defaults: { _controller: ShopBundle:Velo:ajouter }
+
+velo_list:
+    path:     /listV
+    defaults: { _controller: ShopBundle:Velo:showAll }
+
+velo_img:
+    path:     /imgV/{id}
+    defaults: { _controller: ShopBundle:Velo:showImg }
+
+velo_updateProd:
+    path:     /updatePV/{id}
+    defaults: { _controller: ShopBundle:Velo:update }
+
+velo_deleteProd:
+    path:     /deleteePV/{id}
+    defaults: { _controller: ShopBundle:Velo:delete }
+
+prod_addPanier:
+    path:     /panier/add/{id}
+    defaults: { _controller: ShopBundle:Panier:add }
+
+prod_Panier:
+    path:     /panier
+    defaults: { _controller: ShopBundle:Panier:showPanier }
+
+prod_Remove:
+    path:     /panier/rmv/{id}
+    defaults: { _controller: ShopBundle:Panier:remove }
+cart_Validate:
+    path:     /panier/vld
+    defaults: { _controller: ShopBundle:Panier:validate }
+commande_Show:
+    path:     /panier/show/{idUser}
+    defaults: { _controller: ShopBundle:Panier:afficherCommande }

@@ -29,9 +29,13 @@ class Images
     private $url;
 
     /**
-     * @var integer
+     * @var \Produit
      *
-     * @ORM\Column(name="id_produit", type="integer", nullable=false)
+     *
+     * @ORM\ManyToOne(targetEntity="Produit")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_produit", referencedColumnName="id_prod")
+     * })
      */
     private $idProduit;
 
@@ -68,7 +72,7 @@ class Images
     }
 
     /**
-     * @return int
+     * @return \Produit
      */
     public function getIdProduit()
     {
@@ -76,12 +80,16 @@ class Images
     }
 
     /**
-     * @param int $idProduit
+     * @param \Produit $idProduit
      */
     public function setIdProduit($idProduit)
     {
         $this->idProduit = $idProduit;
     }
+
+
+
+
 
 
 }
