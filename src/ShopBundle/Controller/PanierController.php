@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use AppBundle\Entity\Produit;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use JMS\Payment\CoreBundle\Form\ChoosePaymentMethodType;
 
 class PanierController extends AbstractController
 {
@@ -114,7 +115,6 @@ class PanierController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($commande);
             $em->flush();
-            $this->addFlash('info', 'Created Successfully !');
             return $this->redirectToRoute('commande_Show',['idUser'=>$iduser->getId()]);
 
 
@@ -128,5 +128,26 @@ class PanierController extends AbstractController
         return $this->render("@Shop/Produits/users/histAchats.html.twig",array(
             'comms'=>$comamndes,
         ));
+    }
+    public function showPdfAction($id, Request $request)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $commande=$em->getRepository(Commande::class)->find($id);
+        $template = $this->render('@Shop/Produits/Users/facture.html.twig',array(
+            'comms' => $commande,
+        ));
+        $snappy=$this->get("knp_snappy.pdf");
+
+        $filename="UserFacture";
+
+        return new Response(
+          $snappy->getOutputFromHtml($template),
+            200,
+            array(
+                'Content-Type' => 'applciation/pdf',
+                'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"'
+            )
+        );
+
     }
 }

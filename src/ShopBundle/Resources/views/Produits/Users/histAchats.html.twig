@@ -274,8 +274,9 @@ Author: Kamleshyadav
                     <th data-field="id">ID Commande</th>
                     <th data-field="name" data-sortable="true">Prix_Total</th>
                     <th data-field="salary" data-sortable="true">Code Promo</th>
-                    <th data-field="produit" data-sortable="false">Produits</th>
+                    <th data-field="produit" data-sortable="true">Produits</th>
                     <th data-field="country" data-sortable="true">Date</th>
+                    <th data-field="print" data-sortable="true">Print</th>
                     <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
                     </thead>
                     {% for commande in comms %}
@@ -284,24 +285,27 @@ Author: Kamleshyadav
                                 <td>{{ commande.idCommande }}</td>
                                 <td>{{commande.prixTotal}}</td>
                                 <td>{{commande.codePromo}}</td>
-                                {% for prod in commande.idProd %}
-                                    <th scope="row" class="name">
-                                        <div class="img-fluid">
-                                            <a href="" >
-                                                <br><br><img alt="Image placeholder" class="img-fluid" src="{{ prod.urlImage}}">
 
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="mb-0 text-sm">{{ prod.nom }}</span>
-                                            </div>
-                                        </div>
-                                    </th>
-                                {% endfor %}
-                                <td></td>
+                                    <td>
+                                    <table>
+                                        {% for prod in commande.idProd %}
+                                        <tr>
+                                    <td><img src="{{ prod.urlImage }} " height="52" width="30"></td>
+                                    <td>{{ prod.idProd }}</td>
+                                    <td>{{ prod.prixProd }}</td>
+                                    <td>{{ prod.nom }}</td>
+                                    <td>{{ prod.marque }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </table>
+                                    </td>
+                                    <td>{{ commande.date | date }}</td>
+                                <td><a href="{{ path('pdf_commande',{('id'):commande.idCommande}) }}" class="cy_button">Print Receipt</a></td>
                             </tr>
                             </tbody>
-                        {% endfor %}
+
                     </table>
+                <div id="paypal-button-container" class="center"></div>
                 </div>
             </div>
         </div>
@@ -398,7 +402,7 @@ Author: Kamleshyadav
         <img src="images/go_to_top.png" alt="back to top">
     </div>
 </div>
-</body>
+
 {% block scripts %}
     <script type="text/javascript">
         var $table = $('#fresh-table')
@@ -518,6 +522,37 @@ Author: Kamleshyadav
         ga('send', 'pageview')
 
     </script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AZTa-Sx2AQBuz9Gu12ScOYhp94pZplWfHzspzBjnA09Q9qTPwZC9F1ESGHC1LZut7ci7HecqyqaqYQnp"></script>
+<script>
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '{{ commande.prixTotal }}'
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                alert('Transaction completed by ' + {{ commande.idUser.nom | upper }});
+                // Call your server to save the transaction
+                return fetch('/paypal-transaction-complete', {
+                    method: 'post',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        orderID: data.orderID
+                    })
+                });
+            });
+        }
+    }).render('#paypal-button-container');
+</script>
+
+</body>
     <!--scripts start-->
     <script src="{{asset('Asset/js/jquery.js')}}"></script>
     <script src="{{ asset('Asset/js/tether.min.js')}}"></script>
@@ -538,5 +573,5 @@ Author: Kamleshyadav
     <script src="{{ asset('Asset/js/jquery.nice-select.min.js')}}"></script>
     <script src="{{ asset('Asset/js/custom.js')}}"></script>
 {% endblock %}
-
+{% endfor %}
 </html>

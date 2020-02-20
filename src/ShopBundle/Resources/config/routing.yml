@@ -65,3 +65,11 @@ cart_Validate:
 commande_Show:
     path:     /panier/show/{idUser}
     defaults: { _controller: ShopBundle:Panier:afficherCommande }
+
+pdf_commande:
+    path:     /panier/print/{id}
+    defaults: { _controller: ShopBundle:Panier:showPdf }
+
+ajax_search:
+    path:     /search
+    defaults: { _controller: ShopBundle:Product:search }

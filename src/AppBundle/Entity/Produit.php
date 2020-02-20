@@ -3,12 +3,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Produit
  *
  * @ORM\Table(name="produit", indexes={@ORM\Index(name="FK_prodImage", columns={"id_image"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ShopBundle\Repository\ProduitRepository")
  */
 class Produit
 {
@@ -37,7 +38,9 @@ class Produit
 
     /**
      * @var float
-     *
+     *     @Assert\GreaterThan(
+     *     value = 0
+     * )
      * @ORM\Column(name="prix_prod", type="float", precision=10, scale=0, nullable=true)
      */
     private $prixProd;
@@ -58,7 +61,9 @@ class Produit
 
     /**
      * @var string
-     *
+     * @Assert\Url(
+     *     protocols = {"http", "https", "ftp"}
+     *     )
      * @ORM\Column(name="url_image", type="string", length=255, nullable=false)
      */
     private $urlImage;

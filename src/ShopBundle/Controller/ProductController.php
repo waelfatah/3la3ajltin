@@ -7,6 +7,7 @@ use AppBundle\Entity\Produit;
 use ShopBundle\Form\ProduitType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductController extends Controller
             $em->flush();
             return $this->redirectToRoute("produit_list");
         }
-        return $this->render("@Shop/Produits/add.html.twig",array('formFormat'=>$form->createView()));
+        return $this->render("@Shop/Produits/back/add.html.twig",array('formFormat'=>$form->createView()));
     }
     public function addAction()
     {
@@ -62,5 +63,29 @@ class ProductController extends Controller
         $em->remove($produit);
         $em->flush();
         return $this->redirectToRoute("produit_list");
+    }
+
+    public function searchAction(Request $request)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $requestString=$request->get('q');
+        $produit=$em->getRepository(Produit::class)->findEntitiesByString($requestString);
+        if(!$produit)
+        {
+            $result['produits']['error']="Produit inexistent :(";
+        }
+        else{
+            $result['produits']=$this->getRealEntities($produit);
+        }
+
+        return new Response(json_encode($result));
+    }
+
+    public function getRealEntities($produit)
+    {
+        foreach ($produit as $produit){
+            $realEntities[$produit->getIdProd()]=[$produit->getNom(),$produit->getMarque(), $produit->getPrixProd(), $produit->getQuantite(), $produit->getTypeProd(), $produit->getUrlImage()];
+        }
+        return $realEntities;
     }
 }

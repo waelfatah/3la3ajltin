@@ -16,8 +16,13 @@
                             <a  href="{{ path('produit_add') }}" class="btn btn-warning">Ajouter Produit</a>
                             <br><br>
                             {% else %}
-                            <table class="table align-items-center">
-                                <thead class="thead-light">
+                            <div class="input-group custom-search-form">
+
+                                <input type="text" id="search" class="form-control" placeholder="Search here">
+                            </div>
+                            <br>
+                            <table class="table align-items-center" id="myTable">
+                                <thead class="thead-light" >
                                 <tr>
                                     <th scope="col">
                                         produit
@@ -39,9 +44,9 @@
 
                                 {% for produit in liste %}
 
-                                <tbody class="list">
+                                <tbody class="list" >
 
-                                    <tr>
+                                    <tr >
                                         <th scope="row" class="name">
                                             <div class="media align-items-center">
                                                 <a href="#" class="avatar rounded-circle mr-3">
@@ -90,16 +95,33 @@
                                 </tbody>
                                 {% endif %}
                             </table>
+
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
+    <div class="sidebar-search">
 
+
+        <!-- /input-group -->
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable div").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 
 
 {% endblock %}
 
 {% block scripts %}
+
 {% endblock %}

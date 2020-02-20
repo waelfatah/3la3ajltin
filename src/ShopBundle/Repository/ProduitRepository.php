@@ -11,5 +11,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProduitRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    public function findEntitiesByString($str)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT produit 
+                FROM AppBundle:Produit produit
+                WHERE produit.nom LIKE :str'
+            )
+            ->setParameter('str', '%'.$str.'%')
+            ->getResult();
+    }
 }

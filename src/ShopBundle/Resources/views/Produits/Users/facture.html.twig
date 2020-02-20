@@ -1,0 +1,312 @@
+<page backtop="0mm" backright="10mm" backbottom="20mm" backleft="10mm">
+    <style type="text/css">
+        <!--  table
+        {
+            width: 100%;
+            border-collapse:collapse;
+            font-size:16px}
+
+
+        .header td
+        {
+            width: 50%;
+            vertical-align: top}
+
+
+        .text-left
+        {
+            text-align: left}
+
+
+        .text-right
+        {
+            text-align: right}
+
+
+        .text-center
+        {
+            text-align: center}
+
+
+        .separator
+        {
+            height: 20px;
+            width: 100%}
+
+
+        .content td
+        {
+            border:solid 1px #CFD1D2;
+            padding: 5px;
+        }
+
+
+        .content th
+        {
+            border:solid 1px #000000;
+            padding: 5px;
+            background-color: #000000;
+            color: #FFFFFF}
+
+
+        .ligne1Content
+        {
+            background-color:	#FF4500}
+
+
+        .couleurgris
+        {
+            background-color:#DDDDDD;
+            height:auto;
+        }
+
+
+        .tht, .taxe, .ttc
+        {
+            font-size: 1.2em;
+        }
+
+
+        .ttc
+        {
+            color:	#FF4500;
+            font-weight:bold;
+        }
+
+
+        .couleurorange
+        {
+            background-color: 	#FF4500}
+
+
+        .couleurmoinsgris
+        {
+            background: #EEEEEE;
+        }
+
+
+        .taille1
+        {
+            width:40%;
+        }
+
+
+        .taille2
+        {
+            width:15%;
+        }
+
+
+        .taille3
+        {
+            width:15%;
+        }
+
+
+        .taille4
+        {
+            width:20%;
+        }
+
+
+        .taille5
+        {
+            width:10%;
+        }
+
+
+        .header1
+        {
+            width:50%}
+
+
+        .header2
+        {
+            width:50%}
+
+
+        .tailleligne
+        {
+            height:auto;
+        }
+
+
+        .taille1, taille2, taille3, taille4, taille5
+        {
+            height:auto;
+        }
+
+
+        span
+        {
+            font-size:14px;
+            font-weight:bold;
+            color:	#FF4500;
+        }
+
+
+        h1, h2, h3
+        {
+            color:	#FF4500;
+        }
+
+
+        .colorwhite
+        {
+            color:white}
+    </style>
+    <table class="header">
+        <tr>
+            <td class="text-lef">
+                <h1>Facture</h1>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-left">
+                <span>DE</span>
+                <br/>
+                <br/>
+                {{ comms.idUser.username }}
+                <br>
+            </td>
+            <td class="text-right">
+                <span>FACTURE N:</span>
+                {{ comms.IdCommande }}
+                <br/>
+                <br/>
+                <span>DATE: </span>
+                {{ comms.date|date}}
+                <br/>
+                <br/>
+                <span>N° TVA:</span>
+
+            </td>
+        </tr>
+        <tr>
+            <td class="text-left">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <span>FACTURE A</span>
+                <br/>
+                <br/>
+                {{ comms.idUser.username }}
+                <br>
+            </td>
+            <td class="text-right"></td>
+        </tr>
+    </table>
+    <table class="content">
+        <thead>
+        <tr class="ligne1Content">
+            <td class="text-left couleurgris taille1">
+                <b>ID COMMANDE</b>
+            </td>
+            <td class="text-center couleurmoinsgris taille2">
+                <b>ID PRODUIT</b>
+            </td>
+            <td class="text-center couleurgris taille3">
+                <b>NOM PRODUIT</b>
+            </td>
+            <td class="text-center couleurgris taille5">
+                <b>PRIX PRODUIT</b>
+            </td>
+            <td class="text-center couleurorange taille4 colorwhite">
+                <b>MARQUE</b>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr class="couleurgris">
+            <td class="text-left couleurgris taille1">
+                {{ comms.idCommande }}
+            </td>
+            {% for prod in comms.idProd %}
+            <td class="text-center couleurmoinsgris taille2">
+                {{ prod.idProd }}
+            </td>
+            <td class="text-center taille3">
+                {{ prod.nom }}€
+            </td>
+            <td class="text-center taille5">
+                {{ prod.prixProd }}%
+            </td>
+            <td class="text-center couleurorange taille4 colorwhite">
+                {{ prod.marque}}€
+            </td>
+            {% endfor %}
+        </tr>
+
+
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="4" class="text-right tht">
+                TOTAL HT
+            </td>
+            <td class="tht text-center">
+                {{ comms.prixTotal }} DT
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" class="text-right tht">
+                TAXE à
+            </td>
+            <td class="text-center">
+
+            </td>
+        </tr>
+
+
+        <tr>
+            <td colspan="4" class="text-right tht">
+                TAXE à %
+            </td>
+            <td class="text-center">
+
+            </td>
+        </tr>
+
+
+        <tr>
+            <td colspan="4" class="text-right tht">
+                TAXE à %
+            </td>
+            <td class="text-center">
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" class="text-right">
+                <h3>TOTAL TTC À PAYER</h3>
+            </td>
+            <td class="text-center">
+                {{ comms.prixTotal }}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <span>CONDITIONS ET MOYENS DE PAIEMENT:</span>
+                <br/>
+
+            </td>
+        </tr>
+
+
+        <tr>
+            <td colspan="5">
+                <span>NOTES OU REMARQUES PARTICULIÈRES:</span>
+                <br/>
+
+            </td>
+        </tr>
+        </tfoot>
+
+    </table>
+</page>
