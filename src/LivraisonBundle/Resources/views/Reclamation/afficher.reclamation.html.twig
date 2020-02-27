@@ -1,0 +1,45 @@
+{% extends 'FRONT/front.html.twig' %}
+{% block body %}
+    <div class="cy_cart_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="cy_cart_box woocommerce">
+                        <table class="shop_table shop_table_responsive cart">
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Sujet</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for r in reclamations %}
+                            <tr>
+                                <td>{{ r.Nom }}</td>
+                                <td>{{ r.Prenom }}</td>
+                                <td>{{ r.Sujet }}</td>
+                                <td>{{ r.Description }}</td>
+                                <td>{{ r.Date | date('d-m-Y') }}</td>
+                                <td class="product-remove">
+                                    <a href="{{ path('modifier_reclamation', { 'idReclamation': r.idReclamation }) }}">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                <td class="product-remove">
+                                    <a href="{{ path('supprimer_reclamation', { 'idReclamation': r.idReclamation }) }}">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+livraison_homepage:
+    path:     /
+    defaults: { _controller: LivraisonBundle:Default:index }
+
+ajouter_livraison:
+    path:     /ajoutLivraison
+    defaults: { _controller: LivraisonBundle:Livraison:ajouterLivraison }
+
+test_livraison:
+    path:     /test
+    defaults: { _controller: LivraisonBundle:Livraison:ajouterLivraison }
+
+ajouter_reclamation:
+    path:     /ajoutReclamation
+    defaults: { _controller: LivraisonBundle:Reclamation:ajouterReclamation }
+
+afficher_livraison:
+    path:     /afficheLivraison
+    defaults: { _controller: LivraisonBundle:Livraison:afficherLivraison }
+
+afficher_reclamation:
+    path:     /afficheReclamation
+    defaults: { _controller: LivraisonBundle:Reclamation:afficherReclamation }
+
+supprimer_reclamation:
+    path:     /suppReclamation/{idReclamation}
+    defaults: { _controller: LivraisonBundle:Reclamation:supprimerReclamation }
+
+modifier_reclamation:
+    path:     /modifReclamation/{idReclamation}
+    defaults: { _controller: LivraisonBundle:Reclamation:modifierReclamation }
+
+modifier_livraison:
+    path:     /modifLivraison/{idLivraison}
+    defaults: { _controller: LivraisonBundle:Livraison:modifierLivraison }
+
+supprimer_livraison:
+    path:     /suppLivraison/{idLivraison}
+    defaults: { _controller: LivraisonBundle:Livraison:supprimerLivraison }
+weather_livraison:
+    path:     /weather
+    defaults: { _controller: LivraisonBundle:Livraison:weather }
+map_livraison:
+    path:     /map
+    defaults: { _controller: LivraisonBundle:Livraison:map }
+
+

@@ -22,4 +22,13 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('str', '%'.$str.'%')
             ->getResult();
     }
+
+    public function BestSellers()
+    {
+        $dql = $this->createQueryBuilder('produit');
+        $dql->orderBy('produit.NbVentes', 'DESC');
+        $query = $dql->getQuery();
+        $query->setMaxResults(3);
+        return $query->getResult();
+    }
 }

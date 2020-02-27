@@ -65,27 +65,15 @@ class ProductController extends Controller
         return $this->redirectToRoute("produit_list");
     }
 
-    public function searchAction(Request $request)
+    public function BestSellers()
     {
+        $dataPoints = array();
         $em=$this->getDoctrine()->getManager();
-        $requestString=$request->get('q');
-        $produit=$em->getRepository(Produit::class)->findEntitiesByString($requestString);
-        if(!$produit)
-        {
-            $result['produits']['error']="Produit inexistent :(";
+        $produits=$em->getRepository(Produit::class)->BestSellers();
+        foreach($produits as $row){
+            array_push($dataPoints, array("x"=> $row->getNom(), "y"=> $row->getNbVentes()));
         }
-        else{
-            $result['produits']=$this->getRealEntities($produit);
-        }
-
-        return new Response(json_encode($result));
+        return $this->render("back/backbase.html.twig",array('bestsellers'=>$dataPoints));
     }
 
-    public function getRealEntities($produit)
-    {
-        foreach ($produit as $produit){
-            $realEntities[$produit->getIdProd()]=[$produit->getNom(),$produit->getMarque(), $produit->getPrixProd(), $produit->getQuantite(), $produit->getTypeProd(), $produit->getUrlImage()];
-        }
-        return $realEntities;
-    }
 }

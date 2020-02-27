@@ -28,4 +28,5 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/afficage, role: ROLE_CLIENT }
+        - { path: ^/shop/panier, role: ROLE_CLIENT }
+

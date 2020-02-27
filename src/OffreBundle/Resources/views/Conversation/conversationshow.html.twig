@@ -1,0 +1,49 @@
+{% extends 'Front/frontbase.html.twig' %}
+{% block body %}
+
+    {%  for list in list %}
+        {% if (app.user.id == list.idUserOne.id) or (app.user.id == list.idUserTwo.id)  %}
+            <div class="comments-area">
+                <div class="comments-area-title">
+                    <h3 class="comments-title">{{ list.idoffre.titre }}</h3>
+                </div>
+
+                <ol class="commentlist">
+                    <li class="comment">
+                        <div class="cy_comments">
+                            <div class="comment_img">
+                                <img src="http://via.placeholder.com/104x104" alt="comment author" />
+                            </div>
+                            <div class="comment_data">
+                                <div class="comment_data_info">
+                                    <h3>{{ list.idUserOne }}
+                                        <br>
+                                        <p>{{ list.time |date }}</p>
+                                        <br>
+                                        <p>To: {{ list.idUserTwo }}</p>
+                                        {% if app.user == list.idUserTwo %}
+                                        <br>
+                                        <span class="comment-reply"><a href="{{ path('Conversation_start',{'id':list.idoffre.idoffre , 'iduser':list.idUserOne.id}) }}"> <i class="fa fa-reply" aria-hidden="true"></i> reply</a></span
+                                    {% endif %}
+                                </div>
+                                <p class="comment_para">
+                                <td>{{ list.message }}</td>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <br>
+            <br>
+
+
+        {% endif %}
+    {% endfor %}
+
+
+    </div>
+    </div>
+
+
+{% endblock %}

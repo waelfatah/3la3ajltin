@@ -1,0 +1,21 @@
+
+<div class="modal" id="delivery">
+    <div class="cy_signin">
+        <form method="post" action="{{path('ajouter_livraison') }}">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="cy_sign_img">
+                    <img src="http://via.placeholder.com/376x496" alt="popup" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="cy_sign_form">
+                    <h1>Delivery System</h1>
+                        {{ form_start(formLivraison) }}
+                        {{ form_end(formLivraison) }}
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>

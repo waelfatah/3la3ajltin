@@ -1,0 +1,32 @@
+event_homepage:
+    path:     /
+    defaults: { _controller: EventBundle:Default:index }
+
+event_ajout:
+    path:     /backajoutevent
+    defaults: { _controller: EventBundle:EventAdmin:addEvent}
+
+Event_list:
+    path:     /backlistevent
+    defaults: { _controller: EventBundle:EventAdmin:listEvent }
+
+adminEvent_delete:
+    path:     /backdeleteevent/{id}
+    defaults: { _controller: EventBundle:EventAdmin:deleteEvent }
+
+adminEvent_update:
+    path:     /backupdateevent/{id}
+    defaults: { _controller: EventBundle:EventAdmin:updateEvent }
+
+Display_event:
+    path:     /EventF
+    defaults: { _controller: EventBundle:FrontE:display }
+Favorite_event:
+    path:    /Favorite/{id}/{type}
+    defaults: {_controller: EventBundle:FrontE:rate}
+EventSingle:
+        path: /Event/{id}
+        defaults: {_controller: EventBundle:FrontE:displayEventSolo}
+Localisation:
+  path: /localisation
+  defaults: {_controller: EventBundle:FrontE:map}

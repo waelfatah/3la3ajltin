@@ -1,10 +1,38 @@
+livraison:
+    resource: "@LivraisonBundle/Resources/config/routing.yml"
+    prefix:   /Livraison
+
+blog:
+    resource: "@BlogBundle/Resources/config/routing.yml"
+    prefix:   /blog
+
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /event
+
+formation:
+    resource: "@FormationBundle/Resources/config/routing.yml"
+    prefix:   /formation
+
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 shop:
     resource: "@ShopBundle/Resources/config/routing.yml"
     prefix:   /shop
 
+entretien:
+    resource: "@EntretienBundle/Resources/config/routing.yml"
+    prefix:   /entretien
+
 offre:
     resource: "@OffreBundle/Resources/config/routing.yml"
     prefix:   /offre
+
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /message
 
 app:
     resource: '@AppBundle/Controller/'

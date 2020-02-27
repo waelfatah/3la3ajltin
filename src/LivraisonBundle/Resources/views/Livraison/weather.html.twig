@@ -1,0 +1,59 @@
+{% extends 'FRONT/front.html.twig' %}
+{% block body %}
+    <div class="cy_cart_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="cy_cart_box woocommerce">
+                        <section class="ow-container">
+                            <div class="ow-weather">
+                                <header>
+
+
+                                    <br>                 </header>
+                                <div class="tables">
+                                    <table class="left">
+                                        <tbody>
+                                        <tr>
+                                            <td>Emplacement:</td>
+                                            <td><span class="bold">{{ weather.cityName() }}</span>, {{ weather.country() }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Description:</td>
+                                            <td>{{ weather.description() }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Temperature:</td>
+                                            <td><span class="blue-highlighted">{{ weather.temp|kelvinToCelsius }} &deg;C</span></td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <table class="right">
+                                        <tbody>
+                                        <tr>
+                                            <td>Pression:</td>
+                                            <td><span class="green-highlighted">{{ weather.pressure() }} hPa</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>vent:</td>
+                                            <td>{{ weather.windSpeed() }} m/s</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Humidité:</td>
+                                            <td><span class="orange-highlighted">{{ weather.humidity() }} %</span></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="clear-both"></div>
+                                </div>
+                            </div>
+
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

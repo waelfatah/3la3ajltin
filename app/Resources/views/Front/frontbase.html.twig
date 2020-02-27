@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 **********************************************************************************************************
@@ -24,7 +25,7 @@ Author: Kamleshyadav
     <meta name="author" content="Hsoft">
     <meta name="MobileOptimized" content="320">
     <!-- favicon links-->
-    <link rel="icon" type="image/icon" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/icon" href="favicon.png">
     <!-- main css -->
     <link rel="stylesheet" href="{{asset('Asset/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{ asset('Asset/css/fonts.css')}}">
@@ -38,143 +39,55 @@ Author: Kamleshyadav
     <link href="{{ asset('Asset/js/plugin/revolution/css/navigation.css" rel="stylesheet" type="text/css')}}">
     <link rel="stylesheet" href="{{ asset('Asset/css/style.css')}}">
 </head>
-{% block head %}
-{% endblock %}
+
+
 
 <body>
-<!--Loader Start-->
+<!--Menus Start-->
+{% block logo %}
+    <div class="cy_menu_wrapper">
+        <div class="cy_logo_box">
+            <a href="index.html"><img src="{{ asset('Asset/images/logo.png') }}" alt="logo" class="img-fluid"/></a>
+        </div>
+    </div>
+{% endblock %}
+{% block head %}
+    <div class="cy_top_wrapper">
+        <div class="cy_top_info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="cy_top_detail">
+                            <ul>
+                                <li>{% if is_granted("ROLE_USER") %}
+                                        EMAIL: {{ app.user.email }}
+                                    {% else %}
+                                        <a href=" {{ path('fos_user_registration_register')}}"> Créer Compte </a>
+                                    {% endif %}</li>
+                                {% if is_granted("ROLE_USER") %}
+                                    <li>
+                                        <a href="{{ path('fos_user_profile_show') }}"> {{ app.user.username }} </a>
 
-<!--Top bar start-->
-<div class="cy_top_wrapper">
-    <div class="cy_top_info">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="cy_top_detail">
-                        <ul>
-                            <li><a href="#">EMAIL: Info@yourmail.com</a></li>
-                            <li>PHONE: 18009001010</li>
-                            <li>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="cart"><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    <span>2</span></a>
-                                <ul class="cart_box">
-                                    <li>
-                                        <div class="cart_section">
-                                            <div class="cart_img">
-                                                <a href="#"><img src="http://via.placeholder.com/68x68" alt="cart" class="img-fluid"></a>
-                                            </div>
-                                            <div class="cart_detail">
-                                                <h4><a href="cart.html">Road Bicycle</a></h4>
-                                                <h5>$2200</h5>
-                                            </div>
-                                            <a class="cart_delete"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                        </div>
                                     </li>
-                                    <li>
-                                        <div class="cart_section">
-                                            <div class="cart_img">
-                                                <a href="#"><img src="http://via.placeholder.com/68x68" alt="cart" class="img-fluid"></a>
-                                            </div>
-                                            <div class="cart_detail">
-                                                <h4><a href="cart.html">Road Bicycle</a></h4>
-                                                <h5>$2500</h5>
-                                            </div>
-                                            <a class="cart_delete"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cart_section">
-                                            <div class="cart_total">
-                                                <h4>Total<span>$4700</span></h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cart_section">
-                                            <a href="cart.html" class="cy_button">view cart</a>
-                                            <a href="checkout.html" class="cy_button">Checkout</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- sign icons -->
-<div class="cy_sign_wrapper">
-    <h2 class="signin"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="#signin" data-toggle="modal">Sign In</a></h2>
-    <h2 class="signup"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="#signup" data-toggle="modal">Sign Up</a></h2>
-</div>
-<!-- sign in modal -->
-<div class="modal" id="signin">
-    <div class="cy_signin">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="cy_sign_img">
-                    <img src="http://via.placeholder.com/376x496" alt="popup" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="cy_sign_form">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h1>Sign In</h1>
-                    <input type="text" placeholder="Username" class="form-control">
-                    <input type="password" placeholder="Password" class="form-control">
-                    <div class="forget_password">
-                        <div class="remember_checkbox">
-                            <label>Keep me signed in
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
+                                {% endif %}
+                                <li>{% if is_granted("ROLE_USER") %}
+                                        <a href="{{  path('fos_user_security_logout')}}">Se Deconnecter</a>
+                                    {% else %}
+                                        <a href="{{ path('fos_user_security_login') }}">Se Connecter</a>
+                                    {% endif %}
+
+                                </li>
+
+                            </ul>
                         </div>
-                        <a href="#">Forgot Password ?</a>
                     </div>
-                    <a href="#" class="cy_button">sign in</a>
-                    <p>Dont Have An Account? <a href="#signup" data-toggle="modal" class="cy_modal">Sign Up</a></p>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- sign up modal -->
-<div class="modal" id="signup">
-    <div class="cy_signup">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="cy_sign_img">
-                    <img src="http://via.placeholder.com/376x496" alt="popup" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="cy_sign_form">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h1>Sign up</h1>
-                    <input type="text" placeholder="Username" class="form-control">
-                    <input type="text" placeholder="Email or Phone" class="form-control">
-                    <input type="password" placeholder="Password" class="form-control">
-                    <a href="#" class="cy_button">register</a>
-                    <p>Already Have An Account? <a href="#">Sign In</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{% endblock %}
+
+
 <!--Banner section start-->
 <div class="cy_banner_wrapper">
     <div class="container-fluid">
@@ -185,11 +98,10 @@ Author: Kamleshyadav
         </div>
     </div>
 </div>
-<!--Menus Start-->
-<div class="cy_menu_wrapper">
-    <div class="cy_logo_box">
-        <a href="index.html"><img src="images/logo.png" alt="logo" class="img-fluid"/></a>
-    </div>
+
+
+
+{% block menu %}
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
@@ -215,7 +127,7 @@ Author: Kamleshyadav
                             </li>
                             <li class="dropdown"><a href="javascript:;">pages</a>
                                 <ul class="sub-menu">
-                                    <li><a href="shop.html">shop</a></li>
+                                    <li><a href="{{ path('produit_show') }}">shop</a></li>
                                     <li><a href="shop_single.html">shop single</a></li>
                                     <li><a href="cart.html">cart</a></li>
                                     <li><a href="checkout.html">checkout</a></li>
@@ -223,7 +135,7 @@ Author: Kamleshyadav
                                 </ul>
                             </li>
                             <li><a href="gallery.html">gallery</a></li>
-                            <li><a href="contact.html">contact us</a></li>
+                            <li><a href="http://localhost/untitled/web/app_dev.php/offre/offreadd">profil</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -233,7 +145,9 @@ Author: Kamleshyadav
             </div>
         </div>
     </div>
+{% endblock %}
 </div>
+
 <!-- search section -->
 <div class="cy_search_form">
     <button class="search_close"><i class="fa fa-times"></i></button>
@@ -261,118 +175,122 @@ Author: Kamleshyadav
 <!--upcoming races section Start-->
 
 <!--result section start-->
+{% block footer %}
+    <!--Footer section start-->
+    <div class="cy_footer_wrapper cy_section_padding padder_bottom75">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget cy_footer_about">
+                        <img src="images/logo.png" alt="logo" class="img-fluid"/>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h1 class="widget-title">recent blog</h1>
+                        <div class="cy_recent_post">
+                            <div class="cy_post_img">
+                                <a href="#"><img src="http://via.placeholder.com/70x70" alt="post"/></a>
+                            </div>
+                            <div class="cy_post_data">
+                                <h3><a href="#">Selecting The Proper Bicycle</a></h3>
+                                <p>14 Apr, 2017</p>
+                            </div>
+                        </div>
+                        <div class="cy_recent_post">
+                            <div class="cy_post_img">
+                                <a href="#"><img src="http://via.placeholder.com/70x70" alt="post"/></a>
+                            </div>
+                            <div class="cy_post_data">
+                                <h3><a href="#">Selecting The Proper Bicycle</a></h3>
+                                <div class="cy_post_info"><p>14 Apr, 2017</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h1 class="widget-title">contact info</h1>
+                    </div>
+                    <div class="cy_foo_contact">
+                        <span><img src="images/svg/map-mark.svg" alt="map-mark"></span>
+                        <div class="cy_post_info">
+                            <p>10221 Magnolia Grove Dr,  Manassas, VA, 20110</p>
+                        </div>
+                    </div>
+                    <div class="cy_foo_contact">
+                        <span><img src="images/svg/phone.svg" alt="phone"></span>
+                        <div class="cy_post_info">
+                            <p>Office :- +1-512-555-0190</p>
+                            <p>Office :- +1-512-555-0190</p>
+                        </div>
+                    </div>
+                    <div class="cy_foo_contact">
+                        <span><img src="images/svg/email.svg" alt="email"></span>
+                        <div class="cy_post_info">
+                            <p><a href="#">help@yourmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h1 class="widget-title">flicker widget</h1>
+                        <div class="cy_foo_gallery">
+                            <ul>
+                                <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
+                                <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
+                                <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
+                                <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
+                                <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
+                                <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!--Footer section start-->
-<div class="cy_footer_wrapper cy_section_padding padder_bottom75">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-widget cy_footer_about">
-                    <img src="images/logo.png" alt="logo" class="img-fluid"/>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-widget">
-                    <h1 class="widget-title">recent blog</h1>
-                    <div class="cy_recent_post">
-                        <div class="cy_post_img">
-                            <a href="#"><img src="http://via.placeholder.com/70x70" alt="post"/></a>
-                        </div>
-                        <div class="cy_post_data">
-                            <h3><a href="#">Selecting The Proper Bicycle</a></h3>
-                            <p>14 Apr, 2017</p>
-                        </div>
-                    </div>
-                    <div class="cy_recent_post">
-                        <div class="cy_post_img">
-                            <a href="#"><img src="http://via.placeholder.com/70x70" alt="post"/></a>
-                        </div>
-                        <div class="cy_post_data">
-                            <h3><a href="#">Selecting The Proper Bicycle</a></h3>
-                            <div class="cy_post_info"><p>14 Apr, 2017</p></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-widget">
-                    <h1 class="widget-title">contact info</h1>
-                </div>
-                <div class="cy_foo_contact">
-                    <span><img src="images/svg/map-mark.svg" alt="map-mark"></span>
-                    <div class="cy_post_info">
-                        <p>10221 Magnolia Grove Dr,  Manassas, VA, 20110</p>
-                    </div>
-                </div>
-                <div class="cy_foo_contact">
-                    <span><img src="images/svg/phone.svg" alt="phone"></span>
-                    <div class="cy_post_info">
-                        <p>Office :- +1-512-555-0190</p>
-                        <p>Office :- +1-512-555-0190</p>
-                    </div>
-                </div>
-                <div class="cy_foo_contact">
-                    <span><img src="images/svg/email.svg" alt="email"></span>
-                    <div class="cy_post_info">
-                        <p><a href="#">help@yourmail.com</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-widget">
-                    <h1 class="widget-title">flicker widget</h1>
-                    <div class="cy_foo_gallery">
-                        <ul>
-                            <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
-                            <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
-                            <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
-                            <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
-                            <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
-                            <li><a href="#"><img src="http://via.placeholder.com/78x78" alt="flicker gallery"></a></li>
-                        </ul>
-                    </div>
+    <!--Bottom footer start-->
+    <div class="cy_btm_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <P>Copyright &copy; 2017, <a href="#">Cycling</a>. All Rights Reserved.</P>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!--Bottom footer start-->
-<div class="cy_btm_footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <P>Copyright &copy; 2017, <a href="#">Cycling</a>. All Rights Reserved.</P>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Go to top start-->
+{% endblock %}
+<!--Go to top start
 <div class="cy_go_to">
     <div class="cy_go_top">
-        <img src="images/go_to_top.png" alt="Back to top">
+        <img src="{{ asset('Asset/images/go_to_top.png') }}" alt="Back to top">
     </div>
-</div>
+</div>-->
+
+    <!--scripts start-->
+    <script src="{{asset('Asset/js/jquery.js')}}"></script>
+    <script src="{{ asset('Asset/js/tether.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/jquery.countTo.js')}}"></script>
+    <script src="{{ asset('Asset/js/appear.js')}}"></script>
+    <script src="{{ asset('Asset/js/wow.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/owl/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/magnific/jquery.magnific-popup.min.js')}}"></script>
+    <!--Revolution slider js-->
+    <script src="{{ asset('Asset/js/plugin/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.navigation.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.slideanims.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.layeranimation.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.parallax.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.kenburn.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/jquery.nice-select.min.js')}}"></script>
+    <script src="{{ asset('Asset/js/custom.js')}}"></script>
+
 {% block scripts %}
-<!--scripts start-->
-<script src="{{asset('Asset/js/jquery.js')}}"></script>
-<script src="{{ asset('Asset/js/tether.min.js')}}"></script>
-<script src="{{ asset('Asset/js/bootstrap.min.js')}}"></script>
-<script src="{{ asset('Asset/js/jquery.countTo.js')}}"></script>
-<script src="{{ asset('Asset/js/appear.js')}}"></script>
-<script src="{{ asset('Asset/js/wow.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/owl/owl.carousel.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/magnific/jquery.magnific-popup.min.js')}}"></script>
-<!--Revolution slider js-->
-<script src="{{ asset('Asset/js/plugin/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.navigation.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.slideanims.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.layeranimation.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.parallax.min.js')}}"></script>
-<script src="{{ asset('Asset/js/plugin/revolution/js/revolution.extension.kenburn.min.js')}}"></script>
-<script src="{{ asset('Asset/js/jquery.nice-select.min.js')}}"></script>
-<script src="{{ asset('Asset/js/custom.js')}}"></script>
 {% endblock %}
 
 

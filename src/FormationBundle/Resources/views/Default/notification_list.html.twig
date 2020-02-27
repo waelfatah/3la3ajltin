@@ -1,0 +1,6 @@
+Notifications :
+{% for item in notificationList %}
+    {{ item.notification }}
+{% endfor %}
+
+{{ mgilet_notification_render(notifiableEntity) }}

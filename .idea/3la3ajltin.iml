@@ -19,10 +19,13 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/orm" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fig/link-util" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/firebase/php-jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/friendsofsymfony/message-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/friendsofsymfony/user-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/google/apiclient" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/google/apiclient-services" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/google/auth" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/gregwar/captcha" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/gregwar/captcha-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/guzzle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/promises" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/psr7" />
@@ -31,8 +34,12 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/jms/metadata" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jms/payment-core-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jms/payment-paypal-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-components" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-snappy" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-snappy-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kriswallsmith/buzz" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mgilet/notification-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpseclib/phpseclib" />
@@ -42,6 +49,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/link" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/richsage/rms-push-notifications-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sensio/distribution-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sensio/framework-extra-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sensio/generator-bundle" />
@@ -65,5 +73,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery.validate" level="application" />
+    <orderEntry type="library" name="jquery-1.12.0" level="application" />
   </component>
 </module>

@@ -14,13 +14,28 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class CommandeRepository extends \Doctrine\ORM\EntityRepository
 {
+
+
     public function findCommandeByUser($idUser)
     {
-        return $this->getEntityManager()->createQuery('SELECT e
-                FROM AppBundle:Commande e
-                WHERE e.idUser = :idUser')
-            ->setParameter('idUser', $idUser)
-            ->getResult();
+        $dql = $this->createQueryBuilder('commande');
+        $dql->select()->where('commande.idUser = :idUser')->setParameter('idUser', $idUser);
+        $query = $dql->getQuery();
+        return $query->getResult();
+    }
+
+    public function CountCommande($idUser)
+    {
+        return $this->createQueryBuilder('commande')
+
+            ->select('COUNT(commande)')
+
+            -> where('commande.idUser = :idUser')->setParameter('idUser', $idUser)
+
+            ->getQuery()
+
+            ->getSingleScalarResult();
+
     }
 
 }

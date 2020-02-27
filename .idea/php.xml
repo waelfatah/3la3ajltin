@@ -59,8 +59,16 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/vendor/google/apiclient" />
       <path value="$PROJECT_DIR$/vendor/google/auth" />
+      <path value="$PROJECT_DIR$/vendor/richsage/rms-push-notifications-bundle" />
+      <path value="$PROJECT_DIR$/vendor/kriswallsmith/buzz" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/message-bundle" />
+      <path value="$PROJECT_DIR$/vendor/mgilet/notification-bundle" />
+      <path value="$PROJECT_DIR$/vendor/gregwar/captcha" />
+      <path value="$PROJECT_DIR$/vendor/gregwar/captcha-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />

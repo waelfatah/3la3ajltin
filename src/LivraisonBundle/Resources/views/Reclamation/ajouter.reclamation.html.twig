@@ -1,0 +1,48 @@
+{% extends 'FRONT/front.html.twig' %}
+{% block body %}
+    <div class="cy_checkout_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 offset-lg-4">
+                    <div class="cy_checkout_box">
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.nom, {'attr':{'class':'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.prenom, {'attr':{'class':'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.sujet, {'attr':{'class':'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.description, {'attr':{'class':'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="cy_button next">Ok</button t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{ form_end(form) }}
+{% endblock %}

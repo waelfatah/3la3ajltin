@@ -1,14 +1,18 @@
 <?php
 
 namespace AppBundle\Entity;
-
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Article
  *
  * @ORM\Table(name="article")
- * @ORM\Entity
+ * @Vich\Uploadable
+ * @ORM\Entity(repositoryClass="BlogBundle\Repository\ArticleRepository")
+ *
  */
 class Article
 {
@@ -19,7 +23,7 @@ class Article
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idarticle;
+    public $idarticle;
 
     /**
      * @var string
@@ -28,6 +32,7 @@ class Article
      */
     private $titre;
 
+
     /**
      * @var string
      *
@@ -35,26 +40,8 @@ class Article
      */
     private $description;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="nbLike", type="integer", nullable=true)
-     */
-    private $nblike;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="nbDislike", type="integer", nullable=true)
-     */
-    private $nbdislike;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="nbCommentaire", type="integer", nullable=true)
-     */
-    private $nbcommentaire;
 
     /**
      * @var \DateTime
@@ -66,16 +53,174 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="Photo", type="string", length=200, nullable=false)
+     * @ORM\Column(name="etat", type="string", length=200, nullable=false)
      */
-    private $photo;
+    private $etat;
+    /**
+     * @var \FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="id_user",referencedColumnName="id")
+     *})
+     */
+    private $user;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Rating", type="integer", nullable=false)
+     * @return \FosUser
      */
-    private $rating;
+
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param \FosUser $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdarticle()
+    {
+        return $this->idarticle;
+    }
+
+    /**
+     * @param int $idarticle
+     */
+    public function setIdarticle($idarticle)
+    {
+        $this->idarticle = $idarticle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * @param string $titre
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param \DateTime $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="image_article", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * @param string $etat
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+    }
+
+    // ...
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+
+
 
 
 }

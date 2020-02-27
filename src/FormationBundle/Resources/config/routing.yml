@@ -1,0 +1,56 @@
+formation_homepage:
+    path:     /
+    defaults: { _controller: FormationBundle:Default:index }
+
+formation_ajout:
+    path:     /backajoutformation
+    defaults: { _controller: FormationBundle:FormationAdmin:addFormation}
+
+Formation_list:
+    path:     /backlistformation
+    defaults: { _controller: FormationBundle:FormationAdmin:listFormation }
+
+adminFormation_delete:
+    path:     /backdeleteformation/{id}
+    defaults: { _controller: FormationBundle:FormationAdmin:deleteFormation }
+
+adminFormation_update:
+    path:     /backupdateformation/{id}
+    defaults: { _controller: FormationBundle:FormationAdmin:updateFormation }
+toutlesreservation:
+    path:     /Reservations
+    defaults: { _controller: FormationBundle:FormationAdmin:DisplayReservations }
+
+confirmer_reservation:
+    path:     /confirmerreservation/{id}
+    defaults: { _controller: FormationBundle:FormationAdmin:Confirmer }
+
+rejeter_reservation:
+    path:     /rejeterreservation/{id}
+    defaults: { _controller: FormationBundle:FormationAdmin:rejeter }
+
+Display_formation:
+    path:     /formationsF
+    defaults: { _controller: FormationBundle:FrontF:display }
+
+ReserverFormation:
+    path:     /reserver/{id}
+    defaults: { _controller: FormationBundle:FrontF:displayFormationSolo }
+
+FormationSingle:
+    path: /formation/{id}
+    defaults: {_controller: FormationBundle:FrontF:displayFormationSolo}
+
+Annuler_reservation:
+    path:     /annulerreservation/{id}
+    defaults: { _controller: FormationBundle:FrontF:DeleteReservations }
+
+Mesreservation:
+    path:     /MesReservations
+    defaults: { _controller: FormationBundle:FrontF:MesReservations }
+Notification:
+    path :    /notificationaa
+    defaults: {_controller: FormationBundle:Default:sendNotification }
+Notification_afficher:
+    path :    /notificationAffiche/{notifiable}
+    defaults: {_controller: FormationBundle:Default:indexnotif }

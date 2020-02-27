@@ -1,0 +1,97 @@
+{% extends 'dashboard.html.twig' %}
+{% block head %}
+
+{% endblock %}
+
+{% form_theme VeloUtile 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+
+    <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Ajouter VeloUtile</h5>
+                    {{ form_start(VeloUtile) }}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="badge badge-primary">Primary</span>
+                                <br><br>
+                                {{ form_row(VeloUtile.nom, {'attr':{'class':'form-control'}}) }}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="badge badge-primary">Primary</span>
+                                <br><br>
+                                {{ form_row(VeloUtile.marque, {'attr':{'class':'form-control'}}) }}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="badge badge-primary">Primary</span>
+                                <br><br>
+                                {{ form_row(VeloUtile.prixLocation, {'attr':{'class':'form-control'}}) }}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="badge badge-primary">Primary</span>
+                                <br><br>
+                                {{ form_row(VeloUtile.quantite, {'attr':{'class':'form-control'}}) }}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="badge badge-primary">Primary</span>
+                                <br><br>
+                                {{ form_row(VeloUtile.typeVelo, {'attr':{'class':'form-control'}}) }}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="badge badge-secondary">Secondary</span>
+                                <br><br>
+                                {{ form_row(VeloUtile.urlImage, {'attr':{'class':'form-control'}}) }}
+
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_row(VeloUtile.Ajouter, { 'label': 'Modifier' }) }}
+
+                    {{ form_end(VeloUtile) }}
+                </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i></span>
+                <span class="text-nowrap"></span>
+            </p>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

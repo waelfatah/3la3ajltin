@@ -20,9 +20,22 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new OffreBundle\OffreBundle(),
             new ShopBundle\ShopBundle(),
+            new BlogBundle\BlogBundle(),
             new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
             new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new AdminBundle\AdminBundle(),
+            new RMS\PushNotificationsBundle\RMSPushNotificationsBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new FOS\MessageBundle\FOSMessageBundle(),
+            new LivraisonBundle\LivraisonBundle(),
+            new EventBundle\EventBundle(),
+            new FormationBundle\FormationBundle(),
+            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new EntretienBundle\EntretienBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

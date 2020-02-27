@@ -7,60 +7,205 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Devis
  *
- * @ORM\Table(name="devis", indexes={@ORM\Index(name="FK_devisProd", columns={"id_prod"}), @ORM\Index(name="FK_devisUser", columns={"id_user"})})
- * @ORM\Entity
+ * @ORM\Table(name="devis")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\DevisRepository")
  */
 class Devis
 {
     /**
-     * @var integer
+     * @var int
      *
-     * @ORM\Column(name="id_devis", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $idDevis;
+    private $id;
+
+
+    /**
+     * @var \EntretienBundle\Entity\Entretien
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Entretien")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idEntretien", referencedColumnName="id")
+     * })
+     */
+    private $idEntretien;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="prix_total", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="prixTotal", type="float", precision=10, scale=0, nullable=false)
      */
     private $prixTotal;
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prixPieces", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $prixPieces;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="code_promo", type="string", length=25, nullable=false)
+     * @ORM\Column(name="nomPiece", type="string", length=255)
      */
-    private $codePromo;
+    private $nomPieces;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="quantitePieces", type="integer")
+     */
+    private $quantitePieces ;
 
     /**
-     * @var float
+     * @var \EntretienBundle\Entity\Pieces
      *
-     * @ORM\Column(name="prix_prod", type="float", precision=10, scale=0, nullable=false)
-     */
-    private $prixProd;
-
-    /**
-     * @var \Produit
-     *
-     * @ORM\ManyToOne(targetEntity="Produit")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pieces")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_prod", referencedColumnName="id_prod")
+     *   @ORM\JoinColumn(name="idPieces", referencedColumnName="id")
      * })
      */
-    private $idProd;
-
+    private $idPieces;
     /**
-     * @var \FosUser
+     * @var \AppBundle\Entity\FosUser
      *
-     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FosUser")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="idUser", referencedColumnName="id")
      * })
      */
     private $idUser;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return \EntretienBundle\Entity\Entretien
+     */
+    public function getIdEntretien()
+    {
+        return $this->idEntretien;
+    }
+
+    /**
+     * @param \EntretienBundle\Entity\Entretien $idEntretien
+     */
+    public function setIdEntretien($idEntretien)
+    {
+        $this->idEntretien = $idEntretien;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrixTotal()
+    {
+        return $this->prixTotal;
+    }
+
+    /**
+     * @param float $prixTotal
+     */
+    public function setPrixTotal($prixTotal)
+    {
+        $this->prixTotal = $prixTotal;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrixPieces()
+    {
+        return $this->prixPieces;
+    }
+
+    /**
+     * @param float $prixPieces
+     */
+    public function setPrixPieces($prixPieces)
+    {
+        $this->prixPieces = $prixPieces;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomPieces()
+    {
+        return $this->nomPieces;
+    }
+
+    /**
+     * @param string $nomPieces
+     */
+    public function setNomPieces($nomPieces)
+    {
+        $this->nomPieces = $nomPieces;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantitePieces()
+    {
+        return $this->quantitePieces;
+    }
+
+    /**
+     * @param int $quantitePieces
+     */
+    public function setQuantitePieces($quantitePieces)
+    {
+        $this->quantitePieces = $quantitePieces;
+    }
+
+    /**
+     * @return \EntretienBundle\Entity\Pieces
+     */
+    public function getIdPieces()
+    {
+        return $this->idPieces;
+    }
+
+    /**
+     * @param \EntretienBundle\Entity\Pieces $idPieces
+     */
+    public function setIdPieces($idPieces)
+    {
+        $this->idPieces = $idPieces;
+    }
+
+    /**
+     * @return FosUser
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * @param FosUser $idUser
+     */
+    public function setIdUser($idUser)
+    {
+        $this->idUser = $idUser;
+    }
+
+
 
 
 }

@@ -3,6 +3,7 @@
 namespace ShopBundle\Controller;
 
 use AppBundle\Entity\Commande;
+use AppBundle\Entity\Livraison;
 use ShopBundle\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,6 +12,7 @@ use AppBundle\Entity\Produit;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use JMS\Payment\CoreBundle\Form\ChoosePaymentMethodType;
+
 
 class PanierController extends AbstractController
 {
@@ -67,30 +69,18 @@ class PanierController extends AbstractController
 
         return $this->redirectToRoute("prod_Panier");
     }
-    public function startAction(Request $request,$id,$idUser)
-    {   $conversation = new Conversation();
-
-
-
-        $iduserone=$this->container->get('security.token_storage')->getToken()->getUser();
-        $conversation->setIdUserOne($iduserone);
-        $conversation->setIdUserTwo($idUser);
-        $conversation->setIdOffre($id);
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($conversation);
+    public function deleteAction($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $produit=$em->getRepository(Produit::class)->find($id);
+        $em->remove($produit);
         $em->flush();
-        $this->addFlash('info', 'Created Successfully !');
-        return $this->redirectToRoute('Conversation_show');
-
-
-
     }
-
 
     public function validateAction(SessionInterface $session)
     {
         $D= new \DateTime();
+        $livraison=$this->getDoctrine()->getRepository(Livraison::class)->find(6);
         $produitRepository=$this->getDoctrine()->getRepository(Produit::class);
         $panier = $session->get('panier', []);
         $panierWithData = array();
@@ -107,18 +97,54 @@ class PanierController extends AbstractController
             $totalItem = $item['product']->getPrixProd() * $item['quantity'];
             $total += $totalItem;
             $commande->addProduit($item['product']);
+            if(is_null($item['product']->getQuantiteAV())){
+                $item['product']->setQuantiteAV($item['product']->getQuantite());
+            }
+            if($item['product']->getQuantiteAV() != 0){
+            $quantiteAV=$item['product']->getQuantiteAV() - $item['quantity'];
+            $item['product']->setQuantiteAV($quantiteAV);
+            $nbVentes=$item['product']->getQuantite()-$item['product']->getQuantiteAV();
+            $item['product']->setNbVentes($nbVentes);
+            }
         }
+        $nbcommande=$this->getDoctrine()->getRepository(Commande::class)->CountCommande($iduser->getId());
+        $codePromo= $iduser->getUsername()."25%".$iduser->getId();
+            if($nbcommande == 4){
+                $commande->setCodePromo($codePromo);
+                $message = (new \Swift_Message('Hello Email'))
+                    ->setFrom('wael.fatah@esprit.tn')
+                    ->setTo($iduser->getEmail())
+                    ->setBody(
+                        $this->renderView(
+                        // app/Resources/views/Emails/registration.html.twig
+                        '/Emails/coupon.html.twig',
+                        ['name' => $iduser->getUsername(),
+                            'coupon' => $codePromo]
+
+                    ),
+            'text/html'
+        );
+                $this->get('mailer')->send($message);
+            }
+            else{
+                $commande->setCodePromo(null);
+            }
+            if($nbcommande == 5){
+                $totalred = $total*0.75;
+                $commande->setPrixTotal($totalred);
+            }
+            else{
+                $commande->setPrixTotal($total);
+            }
+
             $commande->setIdUser($iduser);
-            $commande->setPrixTotal($total);
             $commande->setDate($D);
-            $commande->setCodePromo(null);
             $em = $this->getDoctrine()->getManager();
             $em->persist($commande);
             $em->flush();
+        
+        $panierWithData=[];
             return $this->redirectToRoute('commande_Show',['idUser'=>$iduser->getId()]);
-
-
-
     }
 
     public function afficherCommandeAction($idUser)

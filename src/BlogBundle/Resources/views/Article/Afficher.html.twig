@@ -1,0 +1,93 @@
+{% extends 'Front/frontbase.html.twig' %}
+{% block body %}
+
+
+    <div class="cy_form_wrapper">
+        <div class="container">
+            <div class="row">
+
+                <div class="cy_form padder_top50">
+                    <div class="col-lg-12 col-md-12">
+                        <h1 class="cy_heading"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for a in article %}
+        {% if a.etat == 'Confirmé' %}
+
+    <div class="cy_blog_wrapper cy_section_padding">
+        <div class="container">
+            <div class="row">
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="cy_blog_box">
+                        <div class="cy_blog_img">
+                            <img src="http:\\localhost\3la3ajltin\web\Uploads\article\photo\{{ a.image }}" alt="blog" class="img-fluid" />
+                            <div class="cy_blog_overlay"></div>
+                            <div class="cy_blog_links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 15</a></li>
+                                    {% if app.user %}
+                                    {% if a.Rated == "none" %}
+                                    <li><a href="{{ path('rate',{ 'id': a.idarticle ,'type':'Like'}) }}"><i class="fa fa-thumbs-o-up" aria-hidden="true"> </i>{{ a.likes  }} </a></li>
+                                    <li><a href="{{ path('rate',{ 'id': a.idarticle ,'type':'Dislike'}) }}"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>{{ a.dislikes  }} </a></li>
+                                    {% elseif a.Rated == "Like" %}
+                                        <li><a  href="{{ path('rate',{ 'id': a.idarticle ,'type':'Like'}) }}"><i class="fa fa-thumbs-up" aria-hidden="true"> </i>{{ a.likes  }} </a></li>
+                                        <li><a href="{{ path('rate',{ 'id': a.idarticle ,'type':'Dislike'}) }}"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>{{ a.dislikes  }} </a></li>
+                                    {% elseif a.Rated == "Dislike"  %}
+                                        <li><a href="{{ path('rate',{ 'id': a.idarticle ,'type':'Like'}) }}" ><i class="fa fa-thumbs-o-up" aria-hidden="true"> </i>{{ a.likes  }} </a></li>
+
+                                        <li><a href="{{ path('rate',{ 'id': a.idarticle ,'type':'Dislike'}) }} "><i class="fa fa-thumbs-down" aria-hidden="true"></i>{{ a.dislikes  }} </a></li>
+                                    {% endif %}
+                                    {% endif %}
+
+                                    <li><a href="#" class="cy_relative"><i class="fa fa-share-alt" aria-hidden="true"></i> share</a>
+                                        <ul class="cy_so_icons">
+                                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="cy_blog_data">
+
+                            <h2><a href="blog_single.html"></a></h2>
+                            <p></p>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="cy_blog_box">
+
+                        <div class="cy_blog_data">
+                            <ul class="cy_blog_info">
+                                <li><a href="#">by {{ a.titre  }}</a></li>
+                                <li><a href="#">by {{ a.auteur  }}</a></li>
+                                <li><a href="#">{{ a.date | date('d-m-Y') }}</a></li>
+                                <li><a href="#">cycling</a></li>
+                            </ul>
+                            <p>{{ a.description }}</p>
+                             {% if app.user %}
+                            <a href="{{ path('Modifier_description',{'idarticle':a.idarticle}) }}" class="cy_button">Modifier</a>
+
+                            <a href="{{ path('supprimer_article',{'idarticle':a.idarticle}) }}" class="cy_button">Supprimer</a>
+            <a href="{{ path('blogsolo_homepage',{'idarticle':a.idarticle}) }}" class="cy_button">Commenter</a>
+
+                             {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        {% endif %}
+                        {% endfor %}
+{% endblock %}

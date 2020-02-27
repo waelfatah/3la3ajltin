@@ -51,6 +51,34 @@ class Produit
      * @ORM\Column(name="quantite", type="integer", nullable=false)
      */
     private $quantite;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantite_av", type="integer", nullable=true)
+     */
+    private $quantiteAV;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nb_ventes", type="integer", nullable=true)
+     */
+    private $NbVentes;
+
+    /**
+     * @return int
+     */
+    public function getNbVentes()
+    {
+        return $this->NbVentes;
+    }
+
+    /**
+     * @param int $NbVentes
+     */
+    public function setNbVentes($NbVentes)
+    {
+        $this->NbVentes = $NbVentes;
+    }
 
     /**
      * @var string
@@ -77,7 +105,28 @@ class Produit
      * })
      */
     private $idImage;
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     *
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    private $image;
 
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
     /**
      * @return int
      */
@@ -204,6 +253,22 @@ class Produit
     public function setIdImage($idImage)
     {
         $this->idImage = $idImage;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantiteAV()
+    {
+        return $this->quantiteAV;
+    }
+
+    /**
+     * @param int $quantiteAV
+     */
+    public function setQuantiteAV($quantiteAV)
+    {
+        $this->quantiteAV = $quantiteAV;
     }
 
 

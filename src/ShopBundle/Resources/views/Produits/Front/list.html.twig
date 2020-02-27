@@ -6,6 +6,10 @@
 {% block body %}
     {% block produits %}
         {% for produit in list %}
+            {% if produit is empty %}
+                <h1>Oops !</h1>
+            {% else %}
+
             <div class="col-lg-6 col-md-6 item">
                 <div class="cy_store_box">
                     <div class="cy_store_img">
@@ -32,6 +36,8 @@
                     </div>
                 </div>
             </div>
+
+            {% endif %}
         {% endfor %}
     {% endblock %}
 {% endblock %}

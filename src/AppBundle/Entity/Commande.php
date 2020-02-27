@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,11 +39,32 @@ class Commande
     /**
      * @var string
      *
-     * @ORM\Column(name="code_promo", type="string", length=25, nullable=false)
+     * @ORM\Column(name="code_promo", type="string", length=25, nullable=true)
      */
     private $codePromo;
 
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     *
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    private $image;
 
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
     /**
      * @return \DateTime
      */
@@ -126,13 +148,6 @@ class Commande
     {
         $this->codePromo = $codePromo;
     }
-
-
-
-
-
-
-
     /**
      * @return \FosUser
      */

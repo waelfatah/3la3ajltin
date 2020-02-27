@@ -1,0 +1,75 @@
+{% extends 'Front/frontbase.html.twig' %}
+
+{% block body %}
+
+    <div class="cy_shop_wrapper">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-8 col-md-12 push-lg-4">
+                    <div class="cy_shop_single_page">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="owl-stage" style="transform: translate3d(-60px, 0px, 0px); transition: all 0s ease 0s; width: 1650px;"><div class="owl-item cloned" style="width: 330px;"><div class="item">
+                                            <div class="cy_product_img">
+                                                <img src="http:\\localhost\3la3ajltin\web\offre\Profile\{{ list.image}}" height="398px" width="323px"alt="produit" class="img-fluid">
+                                            </div>
+
+                                        </div></div></div>
+                                <div class="woocommerce-product-gallery">
+                                    <div id="sync1" class="owl-carousel owl-theme">
+                                        <div class="item">
+                                            <div class="cy_product_img">
+                                                <img src="http:\\localhost\3la3ajltin\web\Uploads\offre\{{ list.image}}" height="398px" width="323px"alt="produit" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="sync2" class="owl-carousel owl-theme">
+                                        <div class="item">
+                                            <div class="cy_product_thumbnail">
+                                                <img alt="product thumbnail" src="http://via.placeholder.com/76x76" class="img-fluid">
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="cy_product_thumbnail">
+                                                <img alt="product thumbnail" src="http://via.placeholder.com/76x76" class="img-fluid">
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="cy_product_thumbnail">
+                                                <img alt="product thumbnail" src="http://via.placeholder.com/76x76" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="summary entry-summary">
+                                    <h1 class="product_title">{{ list.titre }}</h1>
+                                    <h4 class="product-price-amount">{{ list.prix }} dt</h4>
+                                    <p class="woocommerce_widget_title"> Vendeur: {{ list.idUser.username }}</p>
+                                    <p class="woocommerce_widget_title"> Emplacement: {{ list.emplacement}}</p>
+                                    <p class="woocommerce-product-detail">{{ list.description }}</p>
+                                    {% if app.user.id==list.idUser.id %}
+                                        <a href="{{ path('offre_delete',{('id'):list.idoffre}) }}" class="cy_button" onclick="return confirm('Are you sure')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        <a href="{{ path('offre_Update',{('id'):list.idoffre}) }}" class="cy_button"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
+                                    {% elseif app.user.id!=list.idUser.id %}
+                                        <a href="{{ path('fos_message_thread_new')   }}" class="cy_button">Contacter</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

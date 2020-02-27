@@ -1,0 +1,88 @@
+entretien_homepage:
+    path:     /
+    defaults: { _controller: EntretienBundle:Default:index }
+
+entretien_Back:
+    path:     /back
+    defaults: { _controller: EntretienBundle:Default:back}
+
+entretien_Show_SelfEntretien:
+    path:     /SelfEntretien/Show
+    defaults: { _controller: EntretienBundle:SelfEntretien:show}
+entretien_Show_SelfEntretienB:
+    path:     /SelfEntretienB/Show
+    defaults: { _controller: EntretienBundle:SelfEntretien:showB}
+
+entretien_Add_SelfEntretien:
+    path:     /SelfEntretien/Add
+    defaults: { _controller: EntretienBundle:SelfEntretien:add}
+
+entretien_Show_Prestation:
+    path:     /Prestation/Show
+    defaults: { _controller: EntretienBundle:SelfEntretien:showPrestation}
+
+entretien_Add_Prestation:
+    path:     /Prestation/Add
+    defaults: { _controller: EntretienBundle:SelfEntretien:addPrestation}
+
+appointment_Add_Appointment:
+    path:     /appointment/add
+    defaults: { _controller: EntretienBundle:Appointment:add }
+
+appointment_Show_Appointment:
+    path:     /appointment/show
+    defaults: { _controller: EntretienBundle:Appointment:show }
+
+appointment_Edit_Appointment:
+    path:     /appointment/edit/{id}
+    defaults: { _controller: EntretienBundle:Appointment:edit}
+
+appointment_Delete_Appointment:
+    path:     /appointment/delet/{qdt}
+    defaults: { _controller: EntretienBundle:Appointment:delete}
+
+appointment_Add_Entretien:
+    path:     /entretien/add
+    defaults: { _controller: EntretienBundle:Entretien:add }
+
+appointment_Show_Entretien:
+    path:     /entretien/show
+    defaults: { _controller: EntretienBundle:Entretien:show }
+
+appointment_Edit_Entretien:
+    path:     /entretien/edit/{id}
+    defaults: { _controller: EntretienBundle:Entretien:edit}
+
+appointment_Delete_Entretien:
+    path:     /entretien/delet/{qdt}
+    defaults: { _controller: EntretienBundle:Entretien:delete}
+appointment_Stat_Entretien:
+    path:     /entretien/d
+    defaults: { _controller: EntretienBundle:Entretien:BestSellers }
+
+appointment_Add_Pieces:
+    path:     /Pieces/add
+    defaults: { _controller: EntretienBundle:Pieces:add }
+
+appointment_Show_Pieces:
+    path:     /Pieces/show
+    defaults: { _controller: EntretienBundle:Pieces:show }
+
+appointment_Edit_Pieces:
+    path:     /Pieces/edit/{id}
+    defaults: { _controller: EntretienBundle:Pieces:edit}
+
+appointment_Delete_Pieces:
+    path:     /Pieces/delet/{qdt}
+    defaults: { _controller: EntretienBundle:Pieces:delete}
+
+appointment_Devis_Add:
+    path:     /Devis/{idEntretien}
+    defaults: { _controller: EntretienBundle:Entretien:devis}
+appointment_Devis_Show:
+    path:     /Devis/{idEntretien}
+    defaults: { _controller: EntretienBundle:Entretien:devis}
+
+appointment_Devis_check:
+    path:     /Devis/{id}
+    defaults: { _controller: EntretienBundle:Entretien:check}

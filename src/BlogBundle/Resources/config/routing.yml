@@ -1,0 +1,51 @@
+blog_homepage:
+    path:     /
+    defaults: { _controller: BlogBundle:Article:blog }
+back_homepage:
+    path:     /Back
+    defaults: { _controller: BlogBundle:Article:back }
+Ajouter_homepage:
+    path:     /Ajouter
+    defaults: { _controller: BlogBundle:Article:ajouter }
+Afficher_homepage:
+    path:     /Afficher
+    defaults: { _controller: BlogBundle:Article:afficher }
+stat_homepage:
+    path:     /stat
+    defaults: { _controller: BlogBundle:Article:Mostliked }
+gestion_homepage:
+    path:     /gestion
+    defaults: { _controller: BlogBundle:Article:gestion }
+Control_homepage:
+    path:     /Admin
+    defaults: { _controller: BlogBundle:Article:controler}
+blogsolo_homepage:
+    path:     /blogsolo/{idarticle}
+    defaults: { _controller: BlogBundle:Article:blogsolo}
+Modifier_description:
+    path:     /modification/{idarticle}
+    defaults: { _controller: BlogBundle:Article:modifier }
+supprimer_article:
+    path:     /suppression/{idarticle}
+    defaults: { _controller: BlogBundle:Article:Supprimer }
+rate:
+    path:     /rate/{id}/{type}
+    defaults: { _controller: BlogBundle:Article:rate }
+confirmer_Article:
+    path:     /confirmerArticle/{id}
+    defaults: { _controller: BlogBundle:Article:Confirmer }
+rejeter_Article:
+    path:     /rejeterArticle/{id}
+    defaults: { _controller: BlogBundle:Article:rejeter }
+Adminajout_homepage:
+    path:     /adminajout
+    defaults: { _controller: BlogBundle:Article:ajoutadmin }
+Adminmodif_homepage:
+    path:     /adminmodif/{id}
+    defaults: { _controller: BlogBundle:Article:adminmodif }
+Adminsup_homepage:
+    path:     /adminsup/{id}
+    defaults: { _controller: BlogBundle:Article:adminsup }
+
+
+

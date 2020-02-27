@@ -1,0 +1,33 @@
+{% extends 'Front/frontbase.html.twig' %}
+{% block body %}
+    <div class="comment-respond">
+        <h3 id="reply-title" class="comment-reply-title">Send Message</h3>
+
+        {{ form_start(Form) }}
+        <div class="row">
+            <div class="col-lg-4 col-md-12">
+                <div class="comment_input_wrapper">
+
+                    {{ form_row(Form.titre, {'attr':{'class':'form-control'}}) }}
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <div class="comment_input_wrapper">
+
+                    {{ form_row(Form.message, {'attr':{'class':'form-control'}}) }}
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <div class="comment-form-submit">
+                    <a href="{{ path('Conversation_show') }}"> <button type="submit" class="cy_button submitForm">Submit</button>
+
+                </div>
+            </div>
+            {{ form_end(Form) }}
+        </div>
+
+    </div>
+    </div>
+
+
+{% endblock %}

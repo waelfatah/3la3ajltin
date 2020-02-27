@@ -13,12 +13,11 @@ class ProduitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom',null,array('attr' => ['placeholder' => 'Ceci doit etre string' ,'class' => 'form-group','pattern' => '[a-zA-Z- ]*']))
-            ->add('marque',null,array('attr' => ['placeholder' => '' ,'class' => 'form-group','pattern' => '[a-zA-Z- ]*']))
+        $builder->add('nom')
+            ->add('marque')
             ->add('prixProd')
-            ->add('quantite',null,array('attr' => ['placeholder' => 'Ceci doit etre int' ,'class' => 'form-group','pattern' => '[1-99999999]*']))
+            ->add('quantite')
             ->add('urlImage')
-
             ->add('typeProd', ChoiceType::class, [
                 'choices' =>[
                     'Accessoire' => 'Accessoire',

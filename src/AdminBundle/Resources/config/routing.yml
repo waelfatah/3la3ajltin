@@ -1,0 +1,46 @@
+admin_homepage:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:index }
+
+admin_produit_add:
+    path:     /add
+    defaults: { _controller: AdminBundle:Product:ajouter }
+
+admin_produit_list:
+    path:     /list
+    defaults: { _controller: AdminBundle:Product:showAll }
+
+admin_produit_img:
+    path:     /img/{id}
+    defaults: { _controller: AdminBundle:Product:showImg }
+
+admin_produit_updateProd:
+    path:     /updateP/{id}
+    defaults: { _controller: AdminBundle:Product:update }
+
+admin_produit_deleteProd:
+    path:     /deleteeP/{id}
+    defaults: { _controller: AdminBundle:Product:delete }
+
+admin_velo_add:
+    path:     /addV
+    defaults: { _controller: AdminBundle:Velo:ajouter }
+
+admin_velo_list:
+    path:     /listV
+    defaults: { _controller: AdminBundle:Velo:showAll }
+
+admin_velo_img:
+    path:     /imgV/{id}
+    defaults: { _controller: AdminBundle:Velo:showImg }
+
+admin_velo_updateProd:
+    path:     /updatePV/{id}
+    defaults: { _controller: AdminBundle:Velo:update }
+
+admin_velo_deleteProd:
+    path:     /deleteePV/{id}
+    defaults: { _controller: AdminBundle:Velo:delete }
+admin_ajax_search:
+    path:     /search
+    defaults: { _controller: AdminBundle:Product:search }

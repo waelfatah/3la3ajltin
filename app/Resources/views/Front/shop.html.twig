@@ -40,124 +40,27 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="cy_top_detail">
                         <ul>
-                            <li><a href="#">EMAIL: Info@yourmail.com</a></li>
-                            <li>PHONE: 18009001010</li>
-                            <li>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
-                                </ul>
+                            <li>{% if is_granted("ROLE_USER") %}
+                                    EMAIL: {{ app.user.email }}
+                                {% else %}
+                                    <a href=" {{ path('fos_user_registration_register')}}"> Créer Compte </a>
+                                {% endif %}</li>
+                            {% if is_granted("ROLE_USER") %}
+                                <li>
+                                    <a href="{{ path('fos_user_profile_show') }}"> {{ app.user.username }} </a>
+
+                                </li>
+                            {% endif %}
+                            <li>{% if is_granted("ROLE_USER") %}
+                                    <a href="{{  path('fos_user_security_logout')}}">Se Deconnecter</a>
+                                {% else %}
+                                    <a href="{{ path('fos_user_security_login') }}">Se Connecter</a>
+                                {% endif %}
+
                             </li>
-                            <li class="cart"><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    <span>2</span></a>
-                                <ul class="cart_box">
-                                    <li>
-                                        <div class="cart_section">
-                                            <div class="cart_img">
-                                                <a href="#"><img src="http://via.placeholder.com/68x68" alt="cart" class="img-fluid"></a>
-                                            </div>
-                                            <div class="cart_detail">
-                                                <h4><a href="cart.html">Road Bicycle</a></h4>
-                                                <h5>$2200</h5>
-                                            </div>
-                                            <a class="cart_delete"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cart_section">
-                                            <div class="cart_img">
-                                                <a href="#"><img src="http://via.placeholder.com/68x68" alt="cart" class="img-fluid"></a>
-                                            </div>
-                                            <div class="cart_detail">
-                                                <h4><a href="cart.html">Road Bicycle</a></h4>
-                                                <h5>$2500</h5>
-                                            </div>
-                                            <a class="cart_delete"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cart_section">
-                                            <div class="cart_total">
-                                                <h4>Total<span>$4700</span></h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cart_section">
-                                            <a href="cart.html" class="cy_button">view cart</a>
-                                            <a href="checkout.html" class="cy_button">Checkout</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
+
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- sign icons -->
-<div class="cy_sign_wrapper">
-    <h2 class="signin"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="#signin" data-toggle="modal">Sign In</a></h2>
-    <h2 class="signup"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="#signup" data-toggle="modal">Sign Up</a></h2>
-</div>
-<!-- sign in modal -->
-<div class="modal" id="signin">
-    <div class="cy_signin">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="cy_sign_img">
-                    <img src="http://via.placeholder.com/376x496" alt="popup" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="cy_sign_form">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h1>Sign In</h1>
-                    <input type="text" placeholder="Username" class="form-control">
-                    <input type="password" placeholder="Password" class="form-control">
-                    <div class="forget_password">
-                        <div class="remember_checkbox">
-                            <label>Keep me signed in
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <a href="#">Forgot Password ?</a>
-                    </div>
-                    <a href="#" class="cy_button">sign in</a>
-                    <p>Dont Have An Account? <a href="#signup" data-toggle="modal" class="cy_modal">Sign Up</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- sign up modal -->
-<div class="modal" id="signup">
-    <div class="cy_signup">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="cy_sign_img">
-                    <img src="http://via.placeholder.com/376x496" alt="popup" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="cy_sign_form">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h1>Sign up</h1>
-                    <input type="text" placeholder="Username" class="form-control">
-                    <input type="text" placeholder="Email or Phone" class="form-control">
-                    <input type="password" placeholder="Password" class="form-control">
-                    <a href="#" class="cy_button">register</a>
-                    <p>Already Have An Account? <a href="#">Sign In</a></p>
                 </div>
             </div>
         </div>
