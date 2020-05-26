@@ -33,7 +33,7 @@ class AppointmentController extends Controller
 
 
         $em = $this->getDoctrine()->getManager();
-        $app = $em->getRepository('EntretienBundle:Appointment')->findAll();
+        $app = $em->getRepository('AppBundle:Appointment')->findAll();
         return $this->render('@Entretien/Appointment/show.html.twig', array(
             'appointment' => $app));
     }

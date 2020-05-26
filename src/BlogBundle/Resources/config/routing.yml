@@ -1,5 +1,5 @@
 blog_homepage:
-    path:     /
+    path:     /blog
     defaults: { _controller: BlogBundle:Article:blog }
 back_homepage:
     path:     /Back

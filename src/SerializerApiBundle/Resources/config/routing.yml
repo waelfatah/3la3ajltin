@@ -1,0 +1,13 @@
+serializer_api_homepage:
+    path:     /
+    defaults: { _controller: SerializerApiBundle:Default:index }
+all:
+    path:     /tasks/all
+    defaults: { _controller: SerializerApiBundle:Task:all }
+
+find_task:
+    path:     /tasks/find/{id}
+    defaults: { _controller: SerializerApiBundle:Task:find }
+create_task:
+    path:     /tasks/new
+    defaults: { _controller: SerializerApiBundle:Task:new }

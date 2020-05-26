@@ -194,7 +194,7 @@ Author: Kamleshyadav
                                     <table>
                                         {% for prod in commande.idProd %}
                                         <tr>
-                                    <td><img src="{{ prod.urlImage }} " height="52" width="30"></td>
+                                    <td><img src="{{ asset('images/') }}{{ prod.urlImage }} " height="52" width="30"></td>
                                     <td>{{ prod.idProd }}</td>
                                     <td>{{ prod.prixProd }}</td>
                                     <td>{{ prod.nom }}</td>

@@ -23,7 +23,7 @@ class Devis
 
 
     /**
-     * @var \EntretienBundle\Entity\Entretien
+     * @var \AppBundle\Entity\Entretien
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Entretien")
      * @ORM\JoinColumns({
@@ -59,7 +59,7 @@ class Devis
     private $quantitePieces ;
 
     /**
-     * @var \EntretienBundle\Entity\Pieces
+     * @var \AppBundle\Entity\Pieces
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pieces")
      * @ORM\JoinColumns({
@@ -94,7 +94,7 @@ class Devis
     }
 
     /**
-     * @return \EntretienBundle\Entity\Entretien
+     * @return \AppBundle\Entity\Entretien
      */
     public function getIdEntretien()
     {
@@ -102,7 +102,7 @@ class Devis
     }
 
     /**
-     * @param \EntretienBundle\Entity\Entretien $idEntretien
+     * @param \AppBundle\Entity\Entretien $idEntretien
      */
     public function setIdEntretien($idEntretien)
     {
@@ -174,7 +174,7 @@ class Devis
     }
 
     /**
-     * @return \EntretienBundle\Entity\Pieces
+     * @return \AppBundle\Entity\Pieces
      */
     public function getIdPieces()
     {
@@ -182,7 +182,7 @@ class Devis
     }
 
     /**
-     * @param \EntretienBundle\Entity\Pieces $idPieces
+     * @param \AppBundle\Entity\Pieces $idPieces
      */
     public function setIdPieces($idPieces)
     {

@@ -179,10 +179,13 @@
 <!--Menus Start-->
 
 <!--Menus Start-->
-<div class="cy_menu_wrapper">
-    <div class="cy_logo_box">
-        <a href="index.html"><img src="images/logo.png" alt="logo" class="img-fluid"/></a>
-    </div>
+    {% block logo %}
+        <div class="cy_menu_wrapper">
+            <div class="cy_logo_box">
+                <a href="{{ path('homepage') }}"><img src="{{ asset('Asset/images/logo.png') }}" alt="logo" class="img-fluid"/></a>
+            </div>
+        </div>
+    {% endblock %}
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
@@ -255,7 +258,6 @@
                                 <div class="cy_event_data">
                                     <p>{{ SelfEntretien.titre }}</p>
                                     <p>{{ SelfEntretien.description }}</p>
-                                    <p>{{ 3|rating(5, "fa-3x") }}</p>
                                 </div>
                             </div>
                         </div>

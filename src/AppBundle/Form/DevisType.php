@@ -16,7 +16,7 @@ class DevisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('idPieces',EntityType::class, array(
-            'class'=>'EntretienBundle\Entity\Pieces',
+            'class'=>'AppBundle\Entity\Pieces',
             'choice_label'=>'nom',
             'expanded'=>false,
             'multiple'=>false))

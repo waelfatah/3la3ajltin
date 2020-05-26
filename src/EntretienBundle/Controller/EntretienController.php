@@ -45,7 +45,7 @@ class EntretienController extends Controller
     public function editAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $app = $em->getRepository('EntretienBundle:Entretien')->find($id);
+        $app = $em->getRepository('AppBundle:Entretien')->find($id);
         $form = $this->createForm(EntretienType::class, $app);
         $form->handleRequest($request);
 
@@ -65,7 +65,7 @@ class EntretienController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $app = $em->getRepository('EntretienBundle:Entretien')->find($qdt);
+        $app = $em->getRepository('AppBundle:Entretien')->find($qdt);
         $em->remove($app);
         $em->flush();
         return $this->redirectToRoute('appointment_Show_Entretien');

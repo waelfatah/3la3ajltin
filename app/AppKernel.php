@@ -35,7 +35,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
             new EntretienBundle\EntretienBundle(),
-
+            new SerializerApiBundle\SerializerApiBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

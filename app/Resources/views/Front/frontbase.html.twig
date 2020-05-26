@@ -47,7 +47,7 @@ Author: Kamleshyadav
 {% block logo %}
     <div class="cy_menu_wrapper">
         <div class="cy_logo_box">
-            <a href="index.html"><img src="{{ asset('Asset/images/logo.png') }}" alt="logo" class="img-fluid"/></a>
+            <a href="{{ path('homepage') }}"><img src="{{ asset('Asset/images/logo.png') }}" alt="logo" class="img-fluid"/></a>
         </div>
     </div>
 {% endblock %}
@@ -115,14 +115,14 @@ Author: Kamleshyadav
                             <li><a href="about.html">about</a></li>
                             <li class="dropdown"><a href="javascript:;">event</a>
                                 <ul class="sub-menu">
-                                    <li><a href="event.html">event</a></li>
-                                    <li><a href="event_single.html">event single</a></li>
+                                    <li><a href="{{ path('Display_event') }}">event</a></li>
+                                    <li><a href="{{ path('Display_formation') }}">Formation</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="javascript:;">blog</a>
                                 <ul class="sub-menu">
-                                    <li><a href="blog.html">blog</a></li>
-                                    <li><a href="blog_single.html">blog single</a></li>
+                                    <li><a href="{{ path('Afficher_homepage') }}">blog</a></li>
+
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="javascript:;">pages</a>
@@ -134,7 +134,24 @@ Author: Kamleshyadav
                                     <li><a href="404.html">404</a></li>
                                 </ul>
                             </li>
-                            <li><a href="gallery.html">gallery</a></li>
+                            <li class="dropdown"><a href="javascript:;">Entretien</a>
+                                <ul class="sub-menu">
+                                    <li><a href="{{ path('entretien_Show_SelfEntretienB') }}" >Self Entretien</a></li>
+
+                                    <li><a href="{{ path('appointment_Add_Entretien') }}" >Entretien</a></li>
+                                    <li><a href="{{ path('appointment_Add_Appointment') }}" >Ajouter un RDV</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="javascript:;">Reclamation</a>
+                                <ul class="sub-menu">
+                                    <li><a href="{{ path('ajouter_reclamation') }}" >Ajouter Reclamation</a></li>
+
+                                    <li><a href="{{ path('afficher_reclamation') }}" >Afficher Reclamation</a></li>
+
+
+                                </ul>
+                            </li>
                             <li><a href="http://localhost/untitled/web/app_dev.php/offre/offreadd">profil</a></li>
                         </ul>
                     </nav>

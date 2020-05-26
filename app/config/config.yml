@@ -6,6 +6,7 @@ imports:
     - { resource: "@ShopBundle/Resources/config/services.yml" }
     - { resource: "@AdminBundle/Resources/config/services.yml" }
     - { resource: "@LivraisonBundle/Resources/config/services.yml" }
+    - { resource: "@SerializerApiBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -176,3 +177,4 @@ vich_uploader:
       inject_on_load:     false
       delete_on_update:   true
       delete_on_remove:   true
+

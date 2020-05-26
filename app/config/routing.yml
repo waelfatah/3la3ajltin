@@ -1,3 +1,7 @@
+serializer_api:
+    resource: "@SerializerApiBundle/Resources/config/routing.yml"
+    prefix:   /api
+
 livraison:
     resource: "@LivraisonBundle/Resources/config/routing.yml"
     prefix:   /Livraison

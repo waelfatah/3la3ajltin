@@ -178,10 +178,14 @@ Author: Kamleshyadav
     </div>
 </div>
 <!--Menus Start-->
-<div class="cy_menu_wrapper">
-    <div class="cy_logo_box">
-        <a href="index.html"><img src="{{ asset('asset/images/logo.png') }}" alt="logo" class="img-fluid"/></a>
-    </div>
+
+    {% block logo %}
+        <div class="cy_menu_wrapper">
+            <div class="cy_logo_box">
+                <a href="{{ path('homepage') }}"><img src="{{ asset('Asset/images/logo.png') }}" alt="logo" class="img-fluid"/></a>
+            </div>
+        </div>
+    {% endblock %}
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
